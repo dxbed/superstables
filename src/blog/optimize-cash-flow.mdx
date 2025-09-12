@@ -1,0 +1,45 @@
+---
+tagline: Featured Insight
+title: 5 Strategies to Optimize Cash Flow Across Multiple Bank Accounts
+intro: >
+  Maintaining healthy liquidity—and making sure every dollar is working for you—becomes exponentially more complex when funds are spread across multiple banks, currencies, or subsidiaries. These five strategies help you centralise visibility, automate movement, and turn idle balances into working capital.
+image: /images/blog/1.webp
+author: Claire Donovan, CFA
+published: 2025-06-24
+featured: true
+---
+
+<small>5–7 minute read</small>
+
+## 1. Implement Real-Time Cash Pooling
+
+Centralising your balances lets you eliminate idle cash and borrow only what you need. Two common models:
+
+- **Virtual (physical) pooling:** Surplus funds are physically swept to a master account at defined intervals.
+- **Notional pooling:** Balances are offset for interest calculation without moving the money, reducing transfer friction and FX noise.
+
+**How to act:**
+
+- Pick a banking partner (or treasury API) that supports automated sweeps and provides intraday statements (MT942 / CAMT.052).
+- Define entity-level minimum/maximum thresholds; let rules move the rest to a hub for investment or debt paydown.
+- Mirror the pooling structure in your ledger so accounting stays clean—use virtual accounts for each subsidiary.
+
+> Tip: Start with end-of-day sweeps, then graduate to event- or balance-triggered sweeps when your data quality improves.
+
+## 2. Optimise Sweeping Schedules
+
+Daily sweeps are fine for steady-state businesses. High-velocity models (marketplaces, payroll processors) need finer control.
+
+**Tactics:**
+
+- **Event-driven sweeps:** Trigger after large settlement batches, payroll runs, or payment gateway deposits.
+- **Analytics-led timing:** Use historical transaction data to spot when balances spike, then sweep minutes later.
+- **Micro-sweeps for interest:** If your bank pays intraday interest or charges negative rates, multiple small sweeps can outperform one big one.
+
+Create a simple rules engine:
+
+```text
+IF balance(entity) > X by 14:00 local
+THEN sweep excess to hub
+ELSE leave until EOD
+```

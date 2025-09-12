@@ -1,0 +1,224 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 240 10% 4%; /* #09090B */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 240 10% 4%; /* #09090B */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 240 10% 4%; /* #09090B */
+  --primary: 240 10% 4%; /* #09090B */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 0 0% 93%; /* #EDEDED */
+  --secondary-foreground: 0 0% 9%; /* #171717 */
+  --muted: 0 0% 96%; /* #F5F5F5 */
+  --muted-foreground: 0 0% 49%; /* #7D7D7D */
+  --accent: 0 0% 96%; /* #F5F5F5 */
+  --accent-foreground: 0 0% 9%; /* #171717 */
+  --destructive: 0 84.2% 60.2%; /* #EF4444 */
+  --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+  --border: 0 0% 0% / 0.09; /* #00000017 */
+  --input: 0 0% 89.8%; /* #E5E5E5 */
+  --ring: 240 10% 4%; /* #09090B */
+  --chart-1: 12 76% 61%; /* #E65C41 */
+  --chart-2: 173 58% 39%; /* #2A9D8F */
+  --chart-3: 197 37% 24%; /* #264653 */
+  --chart-4: 43 74% 66%; /* #E9C46A */
+  --chart-5: 27 87% 67%; /* #F4A261 */
+
+  /* ASPECT */
+  --obsidian: 0 0% 98%; /* from 2%  -> 98%  */
+  --dark-gray: 0 0% 86%; /* from 14% -> 86%  */
+  --mid-gray: 0 0% 49%; /* from 51% -> 49%  */
+  --overlay-gray: 0 0% 80% / 0.27; /* from 20%/27% -> 80%/27% */
+  --ebony: 251 14% 85%; /* from 15% -> 85%  */
+  --charcoal: 0 0% 79%; /* from 21% -> 79%  */
+  --jet: 240 10% 96%; /* from 4%  -> 96%  */
+  --star: 251 62% 22%; /* from 78% -> 22%  */
+}
+
+.dark {
+  --background: 240 10% 4%; /* #09090B */
+  --foreground: 0 0% 100%; /* #FFFFFF */
+  --card: 240 10% 4%; /* #09090B */
+  --card-foreground: 0 0% 100%; /* #FFFFFF */
+  --popover: 240 10% 4%; /* #09090B */
+  --popover-foreground: 0 0% 100%; /* #FFFFFF */
+  --primary: 0 0% 100%; /* #FFFFFF */
+  --primary-foreground: 240 10% 4%; /* #09090B */
+  --secondary: 240 10% 10%; /* #19191C */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --muted: 240 10% 10%; /* #19191C */
+  --muted-foreground: 240 5% 65%; /* #A1A1A1 */
+  --accent: 240 10% 10%; /* #19191C */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 84.2% 60.2%; /* #EF4444 */
+  --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+  --border: 0 0% 100% / 0.1; /* #FFFFFF1A */
+  --input: 240 10% 10%; /* #19191C */
+  --ring: 0 0% 100%; /* #FFFFFF */
+  --chart-1: 12 76% 61%; /* #E65C41 */
+  --chart-2: 173 58% 39%; /* #2A9D8F */
+  --chart-3: 197 37% 24%; /* #264653 */
+  --chart-4: 43 74% 66%; /* #E9C46A */
+  --chart-5: 27 87% 67%; /* #F4A261 */
+
+    /* ASPECT */
+  --obsidian: 0 0% 2%; /* #050505 */
+  --dark-gray: 0 0% 14%; /* #232323 */
+  --mid-gray: 0 0% 51%; /* #828282 */
+  --overlay-gray: 0 0% 20% / 0.27; /* #343434 → HSL(0, 0%, 20%) at 27% opacity */
+  --ebony: 251 14% 15%; /* #24222D → H:251° S:14% L:15% */
+  --charcoal: 0 0% 21%; /* #363636 → H:0°   S:0%  L:21% */
+  --jet: 240 10% 4%;
+  --star: 251 62% 78%; /* #B2A5EA */
+}
+
+
+@theme inline {
+  --font-figtree: var(--font-figtree);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-mint-50: hsl(var(--mint-50));
+  --color-mint: hsl(var(--mint));
+
+  --spacing-9xl: 100rem;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-marquee: marquee 25s linear infinite;
+
+  /*  ASPECT  */
+  --color-obsidian: hsl(var(--obsidian));
+  --color-dark-gray: hsl(var(--dark-gray));
+  --color-mid-gray: hsl(var(--mid-gray));
+  --color-overlay-gray: hsl(var(--overlay-gray));
+  --color-ebony: hsl(var(--ebony));
+  --color-charcoal: hsl(var(--charcoal));
+  --color-jet: hsl(var(--jet));
+  --color-star: hsl(var(--star));
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  /* on small screens, full-width up to padding */
+  max-width: 100%;
+
+  /* when you hit your “desktop” breakpoint, cap it */
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  body {
+    font-family: var(--font-figtree), sans-serif;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-figtree), sans-serif;
+  }
+}
+
+@layer components {
+  button {
+    cursor: pointer;
+  }
+  [class*='border'] {
+    @apply border-border;
+  }
+}
+
+body {
+  position: relative;
+}

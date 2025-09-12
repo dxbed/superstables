@@ -1,0 +1,52 @@
+---
+tagline: Customer story
+title: How Nova Scaled Payouts to 60 Countries
+intro: >
+  A deep-dive with Nova’s finance lead on automating treasury ops as they expanded abroad—cutting payout times, FX costs, and manual reconciliation.
+image: /images/blog/3.webp
+author: Jenna Patel, Finance Lead at Nova
+published: 2025-06-06
+---
+
+<small>6–8 minute read</small>
+
+## The Challenge
+
+Nova went from paying a handful of vendors in Europe to thousands of partners worldwide—fast. Their pains:
+
+- 5+ banking portals, each with different cut-off times
+- Manual FX conversions and opaque fees
+- Week-long reconciliation cycles every month end
+
+## The Solution
+
+Nova plugged our treasury API into their payout engine:
+
+- **Virtual accounts** per market to segregate flows
+- **Automated FX** rules (bulk conversions at preferred rate windows)
+- **Real-time webhooks** to update their ERP (no more CSV uploads)
+
+## Results
+
+- **60→2 hours** to reconcile monthly payouts
+- **~35 bps** saved on average FX costs
+- **95% fewer** failed or delayed payments (thanks to validation + alerts)
+
+> “We didn’t just speed things up—we actually trust our cash positions now.” — _Jenna Patel_
+
+## Implementation Timeline
+
+1. **Week 1–2:** Map current bank feeds & design target flow
+2. **Week 3–4:** Stand up multi-currency wallets and virtual accounts
+3. **Week 5:** Ship webhook listeners & reconciliation rules
+4. **Week 6:** Turn on automation, monitor exceptions only
+
+## Lessons Learned
+
+- Define ownership: Ops vs Finance vs Engineering.
+- Start with the top three corridors; generalize later.
+- Get alerts in the tools your team actually watches (Slack/Teams).
+
+---
+
+Want to achieve something similar? [Reach out](/contact) and we’ll blueprint it with you.

@@ -1,0 +1,43 @@
+---
+tagline: Inside Aspect
+title: Security Architecture 2025
+intro: >
+  Encryption, isolation, and a zero-trust culture—here’s how we keep your data safe, audited, and resilient.
+image: /images/blog/4.webp
+author: Aspect Security & Infrastructure Team
+published: 2025-05-12
+---
+
+<small>4–6 minute read</small>
+
+## Our Threat Model
+
+We assume credentials can leak, endpoints will be probed, and supply chains get attacked. Everything we build is designed to limit blast radius and detect anomalies early.
+
+## Data Isolation by Design
+
+- **Single-tenant logical separation**: each customer gets isolated schemas and keys.
+- **Scoped service accounts**: microservices can only touch the data they absolutely need.
+- **Row-level ACLs** for internal tooling—no blanket read access.
+
+## Encryption Everywhere
+
+- **At rest:** AES-256 with envelope encryption; keys in HSM-backed KMS (rotated regularly).
+- **In transit:** TLS 1.3 enforced; mTLS for service-to-service traffic.
+- **Field-level encryption** for especially sensitive attributes (PII, banking details).
+
+## Secrets & Key Management
+
+- Stored in a dedicated secrets manager with strict RBAC and audit trails.
+- Short-lived credentials via OIDC flows; no long-lived API keys in code.
+- Build pipeline signs artifacts; production only runs signed images.
+
+## Continuous Monitoring & Response
+
+- Centralized logs → anomaly detection (ML + rule-based).
+- Immutable audit trails with cryptographic proofs.
+- 24/7 alerting with on-call rotation and documented runbooks.
+
+```text
+Detect -> Triage -> Contain -> Eradicate -> Recover -> Post-mortem
+```
