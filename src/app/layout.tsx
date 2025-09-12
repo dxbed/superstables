@@ -14,24 +14,29 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Aspect - Modern Next.js Template',
-    template: '%s | Aspect',
+    default: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
+    template: '%s | Superstables',
   },
   description:
-    'A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application.',
+    'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
   keywords: [
-    'Next.js',
-    'React',
-    'JavaScript',
-    'TypeScript',
-    'TailwindCSS',
-    'Template',
-    'Shadcn/UI',
-    'Web Development',
+    'stablecoins',
+    'fiat',
+    'institutional',
+    'cryptocurrency',
+    'trading',
+    'finance',
+    'banking',
+    'compliance',
+    'on-ramp',
+    'off-ramp',
+    'EUR',
+    'USD',
+    'worldwide',
   ],
-  authors: [{ name: 'Aspect Team' }],
-  creator: 'Aspect Team',
-  publisher: 'Aspect',
+  authors: [{ name: 'Superstables Team' }],
+  creator: 'Superstables Team',
+  publisher: 'Superstables',
   robots: {
     index: true,
     follow: true,
@@ -48,26 +53,26 @@ export const metadata: Metadata = {
     shortcut: [{ url: '/favicon/favicon.ico' }],
   },
   openGraph: {
-    title: 'Aspect - Modern Next.js Template',
+    title: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
     description:
-      'A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application.',
-    siteName: 'Aspect',
+      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
+    siteName: 'Superstables',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Aspect - Modern Next.js Template',
+        alt: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aspect - Modern Next.js Template',
+    title: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
     description:
-      'A modern, fully featured Next.js template built with Shadcn/UI, TailwindCSS and TypeScript, perfect for your next web application.',
+      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
     images: ['/og-image.jpg'],
-    creator: '@aspect',
+    creator: '@superstables',
   },
 };
 

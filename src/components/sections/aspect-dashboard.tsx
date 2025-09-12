@@ -5,26 +5,26 @@ import { cn } from '@/lib/utils';
 
 const FEATURES = [
   {
-    title: 'Click-Through Detail',
-    description: `Drill from high-level numbers straight into the underlying transactions, filters, and audit trail.`,
+    title: 'Audit-Ready Transparency',
+    description: `See live quotes, route decisions, and full execution traces—down to min-out, fees, and counterparties—with downloadable receipts for reconciliation.`,
     icon: BookUser,
   },
   {
-    title: 'One-Click Transfers',
+    title: 'Wallet or Bank Settlement',
     description:
-      'Move funds between accounts (or currencies) in less than ten seconds—no separate portal required.',
+      'Swap USDC↔EURC on-chain or send USDC→EUR straight to your IBAN at low bps—no extra portals, contracts, or new bank accounts.',
     icon: ArrowDownUp,
   },
   {
-    title: 'Smart Alerts & Insights',
+    title: 'Peg Watch & Smart Guardrails',
     description:
-      'Set thresholds once and get proactive nudges when balances dip, spikes occur, or FX moves against you.',
+      'We monitor stablecoin pegs in real time; during stress we auto-reroute, throttle size, or hedge—then alert your team instantly.',
     icon: SmartphoneNfc,
   },
   {
-    title: 'Enterprise-Grade Security',
+    title: 'Institutional-Grade Security & Compliance',
     description:
-      'AES-256 encryption, SOC 2 Type II compliance, and MFA baked in to keep every action—and every dollar—safe.',
+      'Policy-aware routing, KYB/KYC and sanctions screening via regulated partners, roles and approvals, and strong encryption—keeping every swap, and every euro, safe.',
     icon: FileLock2,
   },
 ];
@@ -49,7 +49,7 @@ const AspectDashboard = () => {
         <div className="relative">
           <div className="group pointer-events-none absolute inset-0 flex size-full flex-col items-center justify-center self-start">
             <Image
-              src="/images/homepage/dashboard/dashboard-background.webp"
+              src="/images/homepage/dashboard/dashboard-background.png"
               alt={`hero background`}
               fill
               className="size-full object-cover"
@@ -57,7 +57,7 @@ const AspectDashboard = () => {
           </div>
           <div className="group pointer-events-none absolute inset-0 z-20 flex size-full flex-col items-center justify-center self-start">
             <Image
-              src="/images/homepage/dashboard/dashboard-frontground.webp"
+              src="/images/homepage/dashboard/dashboard-frontground.png"
               alt={`hero foreground`}
               fill
               className="size-full object-cover"
@@ -67,7 +67,7 @@ const AspectDashboard = () => {
             <div className="bg-overlay-gray rounded-sm p-2 sm:p-3 md:p-4 lg:rounded-md">
               <div className="relative aspect-video size-full overflow-hidden rounded-sm lg:rounded-md">
                 <Image
-                  src="/images/homepage/dashboard/dashboard.webp"
+                  src="/images/homepage/dashboard/dashboard.jpg"
                   alt={`Aspect product interface showing connected banks`}
                   fill
                   className="object-contain object-left-top"

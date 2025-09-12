@@ -12,7 +12,7 @@ const AspectHero = () => {
       <div className="border-transparent relative w-full border px-5">
         <div className="group pointer-events-none absolute inset-0 flex size-full flex-col items-center justify-center self-start">
           <Image
-            src="/images/homepage/hero-background.webp"
+            src="/images/homepage/hero-background.png"
             alt={`hero background`}
             fill
             className="size-full object-cover"
@@ -42,6 +42,7 @@ const AspectHero = () => {
               <Link href="/login">Book a demo</Link>
             </Button>
           </div>
+
         </div>
       </div>
     </section>
