@@ -68,7 +68,7 @@
   --chart-4: 43 74% 66%; /* #E9C46A */
   --chart-5: 27 87% 67%; /* #F4A261 */
 
-    /* ASPECT */
+  /* ASPECT */
   --obsidian: 0 0% 2%; /* #050505 */
   --dark-gray: 0 0% 14%; /* #232323 */
   --mid-gray: 0 0% 51%; /* #828282 */
@@ -78,7 +78,6 @@
   --jet: 240 10% 4%;
   --star: 251 62% 78%; /* #B2A5EA */
 }
-
 
 @theme inline {
   --font-figtree: var(--font-figtree);

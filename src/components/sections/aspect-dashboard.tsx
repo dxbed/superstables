@@ -35,8 +35,8 @@ const AspectDashboard = () => {
       id="aspect-dashboard"
       className="bg-obsidian relative overflow-hidden px-2.5 lg:px-0"
     >
-      <div className="border-r-transparent border-l-transparent relative container border px-0">
-        <div className="border-b-transparent grid grid-cols-1 gap-4 border-b px-6 pt-20 pb-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:pt-32 lg:pb-12">
+      <div className="relative container border border-r-transparent border-l-transparent px-0">
+        <div className="grid grid-cols-1 gap-4 border-b border-b-transparent px-6 pt-20 pb-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:pt-32 lg:pb-12">
           <h1 className="text-foreground text-3xl tracking-tight">
             See Every Dollar, Understand Every Trend, and Act with Unmatched
             Speed
@@ -76,13 +76,13 @@ const AspectDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bg-obsidian border-b-transparent border-t-transparent flex flex-col items-start justify-start overflow-x-auto rounded-none border-t border-b p-0 lg:basis-1/4 lg:flex-row">
+        <div className="bg-obsidian flex flex-col items-start justify-start overflow-x-auto rounded-none border-t border-b border-t-transparent border-b-transparent p-0 lg:basis-1/4 lg:flex-row">
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
               className={cn(
                 'text-foreground h-full min-h-56 w-full items-start justify-start rounded-none px-6 py-12 text-start whitespace-normal lg:p-8',
-                'lg:border-r-transparent border-b-transparent border-b lg:border-r lg:border-b-0 lg:last:border-none',
+                'border-b border-b-transparent lg:border-r lg:border-b-0 lg:border-r-transparent lg:last:border-none',
               )}
             >
               <div className="flex h-full w-full justify-between gap-2">

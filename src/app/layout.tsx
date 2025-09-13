@@ -83,7 +83,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`h-screen ${figtree.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`h-screen ${figtree.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <Navbar />
         <main className="">{children}</main>
         <Footer />

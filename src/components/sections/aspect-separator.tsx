@@ -4,7 +4,7 @@ const AspectSeparator = () => {
       id="aspect-faq"
       className="bg-obsidian relative overflow-hidden px-2.5 lg:px-0"
     >
-      <div className="border-r-transparent border-l-transparent border-b-transparent container h-20 border-r border-b border-l"></div>
+      <div className="container h-20 border-r border-b border-l border-r-transparent border-b-transparent border-l-transparent"></div>
     </section>
   );
 };

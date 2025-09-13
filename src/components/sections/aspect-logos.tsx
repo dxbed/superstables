@@ -72,7 +72,7 @@ const ITEMS = [
 export default function AspectLogos() {
   return (
     <section className="bg-obsidian overflow-hidden px-2.5 lg:px-0">
-      <div className="border-transparent bg-jet container overflow-hidden border py-12 text-center md:py-20">
+      <div className="bg-jet container overflow-hidden border border-transparent py-12 text-center md:py-20">
         <h2 className="text-foreground text-2xl tracking-tight text-balance md:text-4xl lg:text-5xl">
           Powering the world&apos;s best.
         </h2>

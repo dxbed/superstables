@@ -13,13 +13,13 @@ const navigation = [
 ];
 
 const socialLinks = [
-  { 
+  {
     icon: () => (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
-    ), 
-    href: 'https://twitter.com/superstables' 
+    ),
+    href: 'https://twitter.com/superstables',
   },
   { icon: Linkedin, href: 'https://www.linkedin.com/company/superstables' },
 ];
@@ -34,11 +34,11 @@ export const Footer = () => {
   return (
     <footer className="bg-obsidian text-foreground px-2.5 lg:px-0">
       <div className="container p-0">
-        <div className="bg-jet border-transparent grid border-r border-l p-0 lg:grid-cols-3">
+        <div className="bg-jet grid border-r border-l border-transparent p-0 lg:grid-cols-3">
           {navigation.map((section) => (
             <div
               key={section.title}
-              className="lg:border-r-transparent border-b-transparent border-r-0 border-b px-6 py-10 lg:border-r lg:px-8 lg:py-12"
+              className="border-r-0 border-b border-b-transparent px-6 py-10 lg:border-r lg:border-r-transparent lg:px-8 lg:py-12"
             >
               <h3 className="mb-4 text-2xl font-bold">{section.title}</h3>
               <ul className="space-y-3">
@@ -55,7 +55,7 @@ export const Footer = () => {
               </ul>
             </div>
           ))}
-          <div className="border-b-transparent border-b px-6 py-10 lg:px-8 lg:py-12">
+          <div className="border-b border-b-transparent px-6 py-10 lg:px-8 lg:py-12">
             <div className="flex items-center gap-6 lg:justify-end">
               {socialLinks.map((link) => (
                 <Link
@@ -70,8 +70,8 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-jet border-transparent grid border-r border-b border-l lg:grid-cols-2">
-          <div className="border-b-transparent flex flex-col justify-center border-b px-6 py-10 lg:max-w-md lg:border-b-0 lg:px-8 lg:py-12">
+        <div className="bg-jet grid border-r border-b border-l border-transparent lg:grid-cols-2">
+          <div className="flex flex-col justify-center border-b border-b-transparent px-6 py-10 lg:max-w-md lg:border-b-0 lg:px-8 lg:py-12">
             <div className="max-w-md">
               <p className="text-foreground text-sm">Regulatory disclaimer</p>
               <p className="font-inter-tight text-mid-gray text-xs">
@@ -90,7 +90,7 @@ export const Footer = () => {
             />
           </div>
         </div>
-        <div className="bg-jet border-transparent grid gap-2 border-r border-l px-6 py-4 sm:grid-cols-2 lg:px-8">
+        <div className="bg-jet grid gap-2 border-r border-l border-transparent px-6 py-4 sm:grid-cols-2 lg:px-8">
           <div>
             <p className="text-foreground text-xs">@ 2025 Shadcnblocks.com</p>
           </div>

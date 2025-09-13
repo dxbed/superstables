@@ -64,7 +64,7 @@ const ITEMS = [
 export default function AspectTestimonials() {
   return (
     <section className="bg-obsidian overflow-hidden px-2.5 lg:px-0">
-      <div className="border-transparent container flex flex-col items-center justify-center gap-8 overflow-hidden border border-t-0 py-12 text-center md:py-20">
+      <div className="container flex flex-col items-center justify-center gap-8 overflow-hidden border border-t-0 border-transparent py-12 text-center md:py-20">
         <h2 className="text-foreground text-2xl tracking-tight text-balance md:text-4xl lg:text-5xl">
           What Our Customers Are Saying
         </h2>
@@ -73,7 +73,7 @@ export default function AspectTestimonials() {
           teams to achieve more, streamline workflows, and transform their
           day-to-day operations.
         </p>
-        <div className="border-transparent flex items-center justify-center gap-2 rounded-full border px-3 py-2">
+        <div className="flex items-center justify-center gap-2 rounded-full border border-transparent px-3 py-2">
           <div className="flex items-center justify-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="text-star size-4" fill="currentColor" />
@@ -83,12 +83,12 @@ export default function AspectTestimonials() {
           <p className="text-foreground text-sm">Real Results.</p>
         </div>
       </div>
-      <div className="bg-jet border-transparent container grid overflow-hidden border-r border-l p-0 lg:grid-cols-2">
+      <div className="bg-jet container grid overflow-hidden border-r border-l border-transparent p-0 lg:grid-cols-2">
         {ITEMS.map((item, index) => (
           <div
             key={index}
             className={cn(
-              'border-transparent border-b',
+              'border-b border-transparent',
               index % 2 === 0 && 'lg:border-r',
             )}
           >

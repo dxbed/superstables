@@ -71,21 +71,21 @@ const FEATURES = [
 export const AspectTabs = () => {
   return (
     <section id="aspect-tabs" className="bg-obsidian px-2.5 lg:px-0">
-      <div className="border-r-transparent border-l-transparent border-b-transparent container border-x border-b px-0">
+      <div className="container border-x border-b border-r-transparent border-b-transparent border-l-transparent px-0">
         {/*  DESKTOP  */}
         <Tabs
           defaultValue={FEATURES[0].title}
           orientation="horizontal"
           className="hidden lg:flex lg:flex-col"
         >
-          <TabsList className="bg-jet border-b-transparent flex items-start justify-start overflow-x-auto rounded-none border-b p-0 lg:basis-1/4">
+          <TabsList className="bg-jet flex items-start justify-start overflow-x-auto rounded-none border-b border-b-transparent p-0 lg:basis-1/4">
             {FEATURES.map((feature) => (
               <TabsTrigger
                 key={feature.title}
                 value={feature.title}
                 className={cn(
                   'text-foreground h-full min-h-36 w-full min-w-[200px] flex-1 items-start justify-start rounded-none px-4 py-3 text-start whitespace-normal transition-colors duration-300',
-                  'border-r-transparent border-r last:border-none',
+                  'border-r border-r-transparent last:border-none',
                   'data-[state=active]:text-foreground data-[state=active]:bg-secondary data-[state=active]:shadow-none',
                   'dark:data-[state=active]:text-foreground lg:p-8 dark:text-gray-300',
                 )}
@@ -109,7 +109,7 @@ export const AspectTabs = () => {
               value={feature.title}
               className="bg-obsidian m-0 grid grid-cols-2 overflow-hidden"
             >
-              <div className="border-r-transparent flex flex-col justify-center gap-4 border-r p-6 lg:p-8">
+              <div className="flex flex-col justify-center gap-4 border-r border-r-transparent p-6 lg:p-8">
                 <h4 className="text-foreground text-2xl font-semibold lg:text-4xl">
                   {feature.content.title}
                 </h4>
@@ -153,7 +153,7 @@ export const AspectTabs = () => {
               key={feature.title}
               className="bg-obsidian m-0 overflow-hidden"
             >
-              <div className="border-b-transparent flex flex-col justify-center gap-4 border-b px-6 py-12">
+              <div className="flex flex-col justify-center gap-4 border-b border-b-transparent px-6 py-12">
                 <h4 className="text-foreground text-2xl font-semibold lg:text-4xl">
                   {feature.content.title}
                 </h4>
@@ -166,7 +166,7 @@ export const AspectTabs = () => {
                   </Button>
                 </div>
               </div>
-              <div className="border-b-transparent relative flex h-auto items-center justify-center border-b p-6">
+              <div className="relative flex h-auto items-center justify-center border-b border-b-transparent p-6">
                 <div className="bg-overlay-gray flex-1 rounded-sm p-2 sm:p-3 md:p-4">
                   <div className="relative aspect-[501/351] w-full overflow-hidden rounded-sm p-4">
                     <Image
