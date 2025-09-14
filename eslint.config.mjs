@@ -83,8 +83,8 @@ const eslintConfig = [
         },
       ],
       'import/order': 'off',
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
+      'simple-import-sort/imports': 'off',
+      'simple-import-sort/exports': 'off',
     },
   },
 ];
