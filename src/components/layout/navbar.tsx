@@ -77,10 +77,12 @@ const Navbar = () => {
             {/* Auth Buttons */}
             <div className="flex items-center gap-2.5">
               <Link
-                href="/login"
+                href="https://form.typeform.com/to/HkuIZife"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`transition-opacity duration-300 ${isMenuOpen ? 'max-lg:pointer-events-none max-lg:opacity-0' : 'opacity-100'}`}
               >
-                <Button size="sm">Login</Button>
+                <Button size="sm">Get Early Access</Button>
               </Link>
               <Link
                 href="https://twitter.com/superstables"

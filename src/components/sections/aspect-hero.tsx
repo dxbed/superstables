@@ -19,15 +19,15 @@ const AspectHero = () => {
           />
         </div>
         <div className="flex flex-col items-center justify-center gap-5 px-16 py-12 text-center lg:gap-8 lg:px-32 lg:py-20 xl:px-48">
-          <Button
-            size="sm"
-            className="mt-8 border-[#cbff00]/20 transition-colors hover:border-[#cbff00]/40 lg:mt-12"
-          >
-            <Link href="/blog" className="flex items-center gap-2">
-              Read our latest article
-              <span className="text-[#cbff00]">→</span>
-            </Link>
-          </Button>
+            <Button
+              size="sm"
+              className="mt-8 border-[#cbff00]/20 transition-colors hover:border-[#cbff00]/40 lg:mt-12"
+            >
+              <Link href="/blog/introducing-superstables-stablecoin-and-fiat-swaps-for-institutions" className="flex items-center gap-2">
+                The stablecoin rail for enterprises
+                <span className="text-[#cbff00]">→</span>
+              </Link>
+            </Button>
 
           <h1 className="text-foreground max-w-4xl text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
             Swap <span className="text-[#cbff00]">stablecoins</span> for fiat at
@@ -44,14 +44,20 @@ const AspectHero = () => {
               aria-label="Get started"
               className="bg-[#cbff00] text-black transition-colors hover:bg-[#cbff00]/90"
             >
-              <Link href="/signup">Waiting list</Link>
+              <Link
+                href="https://form.typeform.com/to/HkuIZife"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Early Access
+              </Link>
             </Button>
             <Button
               aria-label="Get started"
               variant={'secondary'}
               className="border-[#cbff00]/30 transition-colors hover:border-[#cbff00]/60 hover:text-[#cbff00]"
             >
-              <Link href="/login">Book a demo</Link>
+              <Link href="/blog">Read more</Link>
             </Button>
           </div>
         </div>
