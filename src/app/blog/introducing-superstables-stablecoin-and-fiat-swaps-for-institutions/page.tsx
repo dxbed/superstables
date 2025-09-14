@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+
 import AspectBlogArticle from '@/components/sections/aspect-blog-article';
 
 export const metadata: Metadata = {

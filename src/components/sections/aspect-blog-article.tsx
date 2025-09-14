@@ -1,16 +1,15 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+
 import {
   ArrowUp,
   Clock,
-  Facebook,
   Home,
-  Instagram,
   Lightbulb,
   Linkedin,
   Twitter,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
