@@ -13,7 +13,8 @@ const AspectWorldMap = () => {
           <div className="absolute right-0 bottom-0 left-0 z-20 flex flex-col items-center pb-8">
             <div className="flex max-w-lg flex-col items-center justify-center px-5">
               <p className="text-foreground mb-4 text-center text-2xl lg:text-4xl">
-                <span className="text-[#cbff00]">Stablecoins</span> ↔ EUR & USD. Worldwide.
+                <span className="text-[#cbff00]">Stablecoins</span> ↔ EUR &
+                USD. Worldwide.
               </p>
               <Button
                 aria-label="Get started"

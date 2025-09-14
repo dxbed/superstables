@@ -1,28 +1,29 @@
-import { ArrowRight, ChevronRight } from "lucide-react";
-import React from "react";
+import { ArrowRight, ChevronRight } from 'lucide-react';
+import React from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 const data = [
   {
-    team: "Superstables",
-    logo: "/favicon/favicon-96x96.png",
-    date: "14 September 2025",
-    title: "Introducing Superstables - Stablecoin and fiat swaps for institutions.",
-    link: "/blog/introducing-superstables-stablecoin-and-fiat-swaps-for-institutions",
+    team: 'Superstables',
+    logo: '/favicon/favicon-96x96.png',
+    date: '14 September 2025',
+    title:
+      'Introducing Superstables - Stablecoin and fiat swaps for institutions.',
+    link: '/blog/introducing-superstables-stablecoin-and-fiat-swaps-for-institutions',
     categories: [
       {
-        name: "Stablecoins",
-        link: "#",
+        name: 'Stablecoins',
+        link: '#',
       },
       {
-        name: "Infrastructure",
-        link: "#",
+        name: 'Infrastructure',
+        link: '#',
       },
       {
-        name: "Institutional",
-        link: "#",
+        name: 'Institutional',
+        link: '#',
       },
     ],
   },
@@ -32,14 +33,14 @@ const AspectBlog16 = () => {
   return (
     <section className="bg-obsidian relative overflow-hidden px-2.5 lg:px-0">
       <div className="container border border-transparent p-0">
-        <div className="border-b-transparent flex flex-col gap-8 overflow-hidden border-b px-6 py-12 md:px-16 md:py-20 md:pt-32">
+        <div className="flex flex-col gap-8 overflow-hidden border-b border-b-transparent px-6 py-12 md:px-16 md:py-20 md:pt-32">
           <h1 className="text-foreground max-w-xl text-3xl font-bold tracking-tight md:text-5xl">
             <span className="text-muted-foreground">Blog.</span>
             <br />
             Latest insights & updates
           </h1>
         </div>
-        <div className="bg-obsidian border-b-transparent border-t-transparent flex flex-col items-start justify-start overflow-x-auto rounded-none border-t border-b p-0">
+        <div className="bg-obsidian flex flex-col items-start justify-start overflow-x-auto rounded-none border-t border-b border-t-transparent border-b-transparent p-0">
           <div className="w-full">
             <Separator className="bg-gray-300 dark:bg-gray-400/30" />
             <div className="">
@@ -53,10 +54,10 @@ const AspectBlog16 = () => {
                         className="h-auto w-11"
                       />
                       <div className="flex flex-col gap-1">
-                        <span className="text-foreground font-semibold">{item.team}</span>
-                        <span className="text-mid-gray text-sm">
-                          Team
+                        <span className="text-foreground font-semibold">
+                          {item.team}
                         </span>
+                        <span className="text-mid-gray text-sm">Team</span>
                       </div>
                     </div>
                     <div className="col-span-2 max-w-xl">
@@ -72,10 +73,10 @@ const AspectBlog16 = () => {
                           <a
                             key={index}
                             href={category.link}
-                            className="text-foreground hover:text-[#cbff00] flex items-center gap-1.5 rounded-full border border-[#cbff00]/20 px-3 py-1.5 text-sm font-medium transition-colors hover:border-[#cbff00]/40"
+                            className="text-foreground flex items-center gap-1.5 rounded-full border border-[#cbff00]/20 px-3 py-1.5 text-sm font-medium transition-colors hover:border-[#cbff00]/40 hover:text-[#cbff00]"
                           >
                             {category.name}
-                            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                            <ChevronRight className="text-muted-foreground h-4 w-4" />
                           </a>
                         ))}
                       </div>
@@ -84,7 +85,7 @@ const AspectBlog16 = () => {
                       variant="outline"
                       asChild
                       size="icon"
-                      className="border-[#cbff00]/30 hover:border-[#cbff00]/60 hover:text-[#cbff00] ml-auto hidden lg:flex transition-colors"
+                      className="ml-auto hidden border-[#cbff00]/30 transition-colors hover:border-[#cbff00]/60 hover:text-[#cbff00] lg:flex"
                     >
                       <a href={item.link}>
                         <ArrowRight className="h-4 w-4" />

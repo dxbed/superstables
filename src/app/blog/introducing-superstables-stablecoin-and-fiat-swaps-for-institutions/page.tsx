@@ -2,8 +2,10 @@ import { Metadata } from 'next';
 import AspectBlogArticle from '@/components/sections/aspect-blog-article';
 
 export const metadata: Metadata = {
-  title: 'Introducing Superstables - Stablecoin and fiat swaps for institutions',
-  description: 'Today we\'re introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points. You choose how to settle: on-chain to a wallet or straight to your bank account via SEPA.',
+  title:
+    'Introducing Superstables - Stablecoin and fiat swaps for institutions',
+  description:
+    "Today we're introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points. You choose how to settle: on-chain to a wallet or straight to your bank account via SEPA.",
   keywords: [
     'Superstables',
     'stablecoins',
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     'enterprise',
     'compliance',
     'audit',
-    'reconciliation'
+    'reconciliation',
   ],
   authors: [{ name: 'Superstables Team' }],
   creator: 'Superstables',
@@ -33,8 +35,10 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Introducing Superstables - Stablecoin and fiat swaps for institutions',
-    description: 'Today we\'re introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points. You choose how to settle: on-chain to a wallet or straight to your bank account via SEPA.',
+    title:
+      'Introducing Superstables - Stablecoin and fiat swaps for institutions',
+    description:
+      "Today we're introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points. You choose how to settle: on-chain to a wallet or straight to your bank account via SEPA.",
     url: 'https://superstables.com/blog/introducing-superstables-stablecoin-and-fiat-swaps-for-institutions',
     siteName: 'Superstables',
     images: [
@@ -50,8 +54,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Introducing Superstables - Stablecoin and fiat swaps for institutions',
-    description: 'Today we\'re introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points.',
+    title:
+      'Introducing Superstables - Stablecoin and fiat swaps for institutions',
+    description:
+      "Today we're introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points.",
     creator: '@superstables',
     images: ['/og-image.jpg'],
   },
