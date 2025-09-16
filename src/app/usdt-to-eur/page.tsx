@@ -108,7 +108,7 @@ export default function UsdtToEurPage() {
                 name: 'Do you support EUR to USDT as well?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes. Two-way conversion is available where supported. If a direct route isn\'t policy-approved in your region, we\'ll offer a compliant alternative.',
+                  text: "Yes. Two-way conversion is available where supported. If a direct route isn't policy-approved in your region, we'll offer a compliant alternative.",
                 },
               },
               {
