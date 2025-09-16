@@ -47,8 +47,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://superstables.comhttp://localhost:3002/usdc-to-usd
-    /usdt-to-eur',
+    canonical: 'https://superstables.com/usdt-to-eur',
   },
   openGraph: {
     type: 'website',
