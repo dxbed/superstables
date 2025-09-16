@@ -38,15 +38,15 @@ const Navbar = () => {
       href: '#',
       dropdownItems: [
         {
-          label: 'USDT to EUR',
+          label: 'Convert USDT to EUR',
           href: '/usdt-to-eur',
         },
         {
-          label: 'USDT to USD',
+          label: 'Convert USDT to USD',
           href: '/usdt-to-usd',
         },
         {
-          label: 'USDC to USD',
+          label: 'Convert USDC to USD',
           href: '/usdc-to-usd',
         },
       ],
