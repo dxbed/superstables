@@ -86,14 +86,15 @@ const Navbar = () => {
                           {link.label}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="bg-obsidian border border-[#cbff00]/20 rounded-md p-2 w-48">
+                          <div className="bg-obsidian w-48 rounded-md border border-[#cbff00]/20 p-2">
                             {link.dropdownItems.map((item) => (
                               <Link
                                 key={item.label}
                                 href={item.href}
                                 className={cn(
-                                  'text-foreground hover:text-[#cbff00] block px-3 py-2 text-sm rounded-md hover:bg-[#cbff00]/5 transition-colors',
-                                  pathname === item.href && 'text-[#cbff00] bg-[#cbff00]/5',
+                                  'text-foreground block rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#cbff00]/5 hover:text-[#cbff00]',
+                                  pathname === item.href &&
+                                    'bg-[#cbff00]/5 text-[#cbff00]',
                                 )}
                               >
                                 {item.label}
@@ -188,7 +189,7 @@ const Navbar = () => {
               <div key={link.label}>
                 {link.dropdownItems ? (
                   <div>
-                    <div className="text-foreground text-lg tracking-[-0.36px] mb-2">
+                    <div className="text-foreground mb-2 text-lg tracking-[-0.36px]">
                       {link.label}
                     </div>
                     <div className="ml-4 space-y-2">
@@ -197,7 +198,7 @@ const Navbar = () => {
                           key={item.label}
                           href={item.href}
                           className={cn(
-                            'text-muted-foreground hover:text-[#cbff00] block text-base transition-colors',
+                            'text-muted-foreground block text-base transition-colors hover:text-[#cbff00]',
                             pathname === item.href && 'text-[#cbff00]',
                           )}
                           onClick={() => setIsMenuOpen(false)}

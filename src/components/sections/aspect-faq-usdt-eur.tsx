@@ -14,12 +14,12 @@ const faqs = [
   {
     question: 'Do you support EUR → USDT as well?',
     answer:
-      'Yes. Two-way is available where supported. If a direct route isn\'t policy-approved in your region, we\'ll offer a compliant alternative (e.g., via EURC/USDC).',
+      "Yes. Two-way is available where supported. If a direct route isn't policy-approved in your region, we'll offer a compliant alternative (e.g., via EURC/USDC).",
   },
   {
     question: 'How fast is USDT → EUR?',
     answer:
-      'Typically same day or next business day for SEPA corridors. You\'ll see the expected posting time at checkout.',
+      "Typically same day or next business day for SEPA corridors. You'll see the expected posting time at checkout.",
   },
   {
     question: 'What are the fees?',
@@ -40,7 +40,7 @@ const faqs = [
 
 const AspectFaqUsdtEur = () => {
   return (
-    <section className="bg-obsidian relative overflow-hidden px-2.5 py-16 lg:px-0 md:py-24">
+    <section className="bg-obsidian relative overflow-hidden px-2.5 py-16 md:py-24 lg:px-0">
       <div className="container border border-transparent p-0">
         <div className="px-6 md:px-16">
           <h2 className="text-foreground mb-12 text-3xl font-bold md:text-6xl">
@@ -51,7 +51,7 @@ const AspectFaqUsdtEur = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="mb-2 rounded-md border-b-0 bg-muted px-5 py-2 md:mb-4"
+                className="bg-muted mb-2 rounded-md border-b-0 px-5 py-2 md:mb-4"
               >
                 <AccordionTrigger className="text-left">
                   {faq.question}
