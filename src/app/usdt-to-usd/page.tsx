@@ -1,19 +1,20 @@
 import { Metadata } from 'next';
 
-import AspectUsdtToEur from '@/components/sections/aspect-usdt-to-eur';
+import AspectUsdtToUsd from '@/components/sections/aspect-usdt-to-usd';
 
 export const metadata: Metadata = {
-  title: 'USDT to EUR (IBAN) for Institutions | Superstables',
+  title: 'USDT to USD (Bank or On-Chain) for Institutions | Superstables',
   description:
-    'Convert USDT to EUR at low bps. Settle to your IBAN via SEPA or on-chain to EURC. Best net rate, policy-aware routing, audit-ready receipts.',
+    'Convert USDT to USD at low bps. Settle to your company bank account (wire/SWIFT; ACH where supported) or on-chain to USDC. Best net rate, policy-aware routing, audit-ready receipts.',
   keywords: [
-    'USDT to EUR',
+    'USDT to USD',
     'USDT conversion',
-    'EUR IBAN',
-    'SEPA transfer',
+    'USD bank account',
+    'wire transfer',
+    'SWIFT transfer',
     'stablecoin conversion',
     'institutional crypto',
-    'USDT to EURC',
+    'USDT to USDC',
     'crypto to fiat',
     'stablecoin rails',
     'institutional trading',
@@ -22,11 +23,12 @@ export const metadata: Metadata = {
     'blockchain payments',
     'crypto compliance',
     'audit-ready receipts',
-    'Tether to Euro',
-    'USDT EUR exchange',
+    'Tether to USD',
+    'USDT USD exchange',
     'cryptocurrency banking',
     'institutional DeFi',
     'stablecoin infrastructure',
+    'ACH transfer',
   ],
   authors: [{ name: 'Superstables Team' }],
   creator: 'Superstables',
@@ -47,32 +49,31 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://superstables.comhttp://localhost:3002/usdc-to-usd
-    /usdt-to-eur',
+    canonical: 'https://superstables.com/usdt-to-usd',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://superstables.com/usdt-to-eur',
-    title: 'USDT to EUR (IBAN) for Institutions | Superstables',
+    url: 'https://superstables.com/usdt-to-usd',
+    title: 'USDT to USD (Bank or On-Chain) for Institutions | Superstables',
     description:
-      'Convert USDT to EUR at low bps. Settle to your IBAN via SEPA or on-chain to EURC. Best net rate, policy-aware routing, audit-ready receipts.',
+      'Convert USDT to USD at low bps. Settle to your company bank account (wire/SWIFT; ACH where supported) or on-chain to USDC. Best net rate, policy-aware routing, audit-ready receipts.',
     siteName: 'Superstables',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'USDT to EUR conversion for institutions',
+        alt: 'USDT to USD conversion for institutions',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'USDT to EUR (IBAN) for Institutions | Superstables',
+    title: 'USDT to USD (Bank or On-Chain) for Institutions | Superstables',
     description:
-      'Convert USDT to EUR at low bps. Settle to your IBAN via SEPA or on-chain to EURC. Best net rate, policy-aware routing, audit-ready receipts.',
+      'Convert USDT to USD at low bps. Settle to your company bank account (wire/SWIFT; ACH where supported) or on-chain to USDC. Best net rate, policy-aware routing, audit-ready receipts.',
     images: ['/og-image.jpg'],
     creator: '@superstables',
     site: '@superstables',
@@ -82,11 +83,11 @@ export const metadata: Metadata = {
   },
   other: {
     'article:section': 'Financial Technology',
-    'article:tag': 'USDT, EUR, stablecoin, institutional, banking',
+    'article:tag': 'USDT, USD, stablecoin, institutional, banking',
   },
 };
 
-export default function UsdtToEurPage() {
+export default function UsdtToUsdPage() {
   return (
     <>
       <script
@@ -98,15 +99,15 @@ export default function UsdtToEurPage() {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'Can I send USDT directly to a European bank account?',
+                name: 'Can I send USDT directly to a U.S. dollar bank account?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes. We convert USDT to EUR and payout to your IBAN (SEPA) in supported regions, with timing shown before you confirm.',
+                  text: 'Yes. We convert USDT to USD and pay out to your corporate USD account via wire/SWIFT (and ACH where supported). Timing is shown before you confirm.',
                 },
               },
               {
                 '@type': 'Question',
-                name: 'Do you support EUR to USDT as well?',
+                name: 'Do you support USD to USDT as well?',
                 acceptedAnswer: {
                   '@type': 'Answer',
                   text: 'Yes. Two-way conversion is available where supported. If a direct route isn\'t policy-approved in your region, we\'ll offer a compliant alternative.',
@@ -114,10 +115,10 @@ export default function UsdtToEurPage() {
               },
               {
                 '@type': 'Question',
-                name: 'How fast is USDT to EUR?',
+                name: 'How fast is USDT to USD?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Typically same day or next business day for SEPA corridors. Expected posting time is shown before you confirm.',
+                  text: 'Typically same day or next business day for supported corridors. Expected posting time is shown before you confirm.',
                 },
               },
               {
@@ -138,17 +139,17 @@ export default function UsdtToEurPage() {
               },
               {
                 '@type': 'Question',
-                name: 'Can we automate this?',
+                name: 'Can I convert USDT to USDC instead of cashing out?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes. Our API provides quotes, execution, and access to receipts and statements.',
+                  text: 'Yes. You can select USDT to USDC for on-chain settlement in a USD-denominated stablecoin.',
                 },
               },
             ],
           }),
         }}
       />
-      <AspectUsdtToEur />
+      <AspectUsdtToUsd />
     </>
   );
 }

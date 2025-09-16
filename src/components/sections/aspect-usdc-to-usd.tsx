@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import AspectFaqUsdtEur from './aspect-faq-usdt-eur';
+import AspectFaqUsdcUsd from './aspect-faq-usdc-usd';
 
-const AspectUsdtToEur = () => {
+const AspectUsdcToUsd = () => {
   return (
     <section className="bg-obsidian relative overflow-hidden px-2.5 lg:px-0">
       <div className="container border border-transparent p-0">
@@ -18,19 +17,18 @@ const AspectUsdtToEur = () => {
           </div>
           
           <div className="relative max-w-6xl mx-auto">
-
             {/* Main Heading */}
             <div className="text-center mb-12">
               <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                 <span className="block mb-2">Convert</span>
-                <span className="text-[#cbff00] block mb-2">USDT → EUR</span>
+                <span className="text-[#cbff00] block mb-2">USDC → USD</span>
                 <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal">
-                  at institutional scale
+                  straight to your bank account
                 </span>
               </h1>
               
               <p className="text-mid-gray mx-auto max-w-3xl text-lg md:text-xl lg:text-2xl font-light leading-relaxed">
-                Two ways to settle: <span className="text-[#cbff00] font-medium">SEPA to your IBAN</span> or <span className="text-[#cbff00] font-medium">on-chain as EURC</span>. 
+                Settle to your corporate USD account via <span className="text-[#cbff00] font-medium">wire/SWIFT</span> (ACH where supported). 
                 Best net rates, policy-aware routing, audit-ready documentation.
               </p>
             </div>
@@ -38,13 +36,13 @@ const AspectUsdtToEur = () => {
             {/* Conversion Visual */}
             <div className="flex items-center justify-center mb-12">
               <div className="flex items-center gap-4 md:gap-8">
-                {/* USDT */}
+                {/* USDC */}
                 <div className="text-center">
-                  <div className="bg-gradient-to-br from-[#26A17B] to-[#1e8a66] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
-                    <span className="text-white font-bold text-lg md:text-xl">₮</span>
+                  <div className="bg-gradient-to-br from-[#2775CA] to-[#1f5fa4] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
+                    <span className="text-white font-bold text-lg md:text-xl">C</span>
                   </div>
-                  <p className="text-foreground font-semibold text-sm md:text-base">USDT</p>
-                  <p className="text-mid-gray text-xs md:text-sm">Tether</p>
+                  <p className="text-foreground font-semibold text-sm md:text-base">USDC</p>
+                  <p className="text-mid-gray text-xs md:text-sm">Circle USD</p>
                 </div>
 
                 {/* Arrow */}
@@ -57,41 +55,14 @@ const AspectUsdtToEur = () => {
                   <p className="text-[#cbff00] text-xs md:text-sm font-medium">Convert</p>
                 </div>
 
-                {/* EUR */}
+                {/* USD */}
                 <div className="text-center">
-                  <div className="bg-gradient-to-br from-[#003399] to-[#002266] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
-                    <span className="text-white font-bold text-lg md:text-xl">€</span>
+                  <div className="bg-gradient-to-br from-[#1e3a8a] to-[#1e40af] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
+                    <span className="text-white font-bold text-lg md:text-xl">$</span>
                   </div>
-                  <p className="text-foreground font-semibold text-sm md:text-base">EUR</p>
-                  <p className="text-mid-gray text-xs md:text-sm">Euro</p>
+                  <p className="text-foreground font-semibold text-sm md:text-base">USD</p>
+                  <p className="text-mid-gray text-xs md:text-sm">Dollar</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Settlement Options */}
-            <div className="grid md:grid-cols-2 gap-4 mb-12 max-w-4xl mx-auto">
-              <div className="border border-[#cbff00]/20 rounded-lg p-6 bg-[#cbff00]/5 hover:bg-[#cbff00]/10 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-[#cbff00]/20 flex h-10 w-10 items-center justify-center rounded-full">
-                    <svg className="h-5 w-5 text-[#cbff00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-foreground text-lg font-semibold">Bank Settlement</h3>
-                </div>
-                <p className="text-mid-gray text-sm">SEPA transfer to your IBAN • Same/next day</p>
-              </div>
-              
-              <div className="border border-[#cbff00]/20 rounded-lg p-6 bg-[#cbff00]/5 hover:bg-[#cbff00]/10 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-[#cbff00]/20 flex h-10 w-10 items-center justify-center rounded-full">
-                    <svg className="h-5 w-5 text-[#cbff00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                    </svg>
-                  </div>
-                  <h3 className="text-foreground text-lg font-semibold">On-chain Settlement</h3>
-                </div>
-                <p className="text-mid-gray text-sm">Receive EURC in your wallet • Instant</p>
               </div>
             </div>
 
@@ -122,7 +93,6 @@ const AspectUsdtToEur = () => {
                 </Button>
               </Link>
             </div>
-
           </div>
         </div>
 
@@ -142,7 +112,7 @@ const AspectUsdtToEur = () => {
                   Get a live quote
                 </h3>
                 <p className="text-mid-gray">
-                  For USDT → EUR (bank) or USDT → EURC (wallet). See the best net rate upfront.
+                  For USDC → USD bank payout. See the best net rate upfront.
                 </p>
               </div>
               
@@ -173,38 +143,30 @@ const AspectUsdtToEur = () => {
           </div>
         </div>
 
-        {/* Settlement options section */}
+        {/* Settlement details section */}
         <div className="border-b border-b-transparent px-6 py-16 md:px-16 md:py-24">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-foreground mb-8 text-3xl font-bold lg:text-4xl">
-              Settlement <span className="text-[#cbff00]">options</span>
+              Settlement <span className="text-[#cbff00]">details</span>
             </h2>
             
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-8">
               <div className="border border-[#cbff00]/20 rounded-lg p-6">
                 <h3 className="text-foreground mb-4 text-2xl font-semibold">
-                  USDT → EUR (IBAN)
+                  USDC → USD (bank)
                 </h3>
-                <p className="text-mid-gray mb-4">
-                  Send USDT, receive euros in your company bank account. Typical posting same day or next business day in supported corridors.
+                <p className="text-mid-gray">
+                  Send USDC, receive dollars in your corporate USD account. Typical posting is same day or next business day in supported corridors; exact timing is shown before you confirm.
                 </p>
-                <div className="flex items-center gap-2 text-[#cbff00]">
-                  <span className="text-sm font-medium">SEPA Transfer</span>
-                  <span>→</span>
-                </div>
               </div>
-              
+
               <div className="border border-[#cbff00]/20 rounded-lg p-6">
                 <h3 className="text-foreground mb-4 text-2xl font-semibold">
-                  USDT → EURC (wallet)
+                  Need the reverse (USD → USDC)?
                 </h3>
-                <p className="text-mid-gray mb-4">
-                  Prefer to stay on-chain? Receive EURC with the same low-bps pricing and documentation.
+                <p className="text-mid-gray">
+                  We support two-way conversion where available—deliver to your wallet or custody account.
                 </p>
-                <div className="flex items-center gap-2 text-[#cbff00]">
-                  <span className="text-sm font-medium">On-chain</span>
-                  <span>→</span>
-                </div>
               </div>
             </div>
           </div>
@@ -238,10 +200,10 @@ const AspectUsdtToEur = () => {
                 </div>
                 <div>
                   <h3 className="text-foreground mb-2 text-lg font-semibold">
-                    Wallet or bank
+                    Bank or on-chain
                   </h3>
                   <p className="text-mid-gray">
-                    One flow to settle on-chain or to IBAN.
+                    Cash out to a USD account—or convert back from USD to USDC when needed.
                   </p>
                 </div>
               </div>
@@ -292,51 +254,11 @@ const AspectUsdtToEur = () => {
         </div>
 
         {/* FAQ Section */}
-        <AspectFaqUsdtEur />
-      </div>
+        <AspectFaqUsdcUsd />
 
-      {/* Who it's for section */}
-      <div className="bg-obsidian relative overflow-hidden px-2.5 py-16 lg:px-0 md:py-24">
-        <div className="container border border-transparent p-0">
-          <div className="px-6 md:px-16">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-foreground mb-8 text-3xl font-bold lg:text-4xl">
-                Who it's <span className="text-[#cbff00]">for</span>
-              </h2>
-              
-              <p className="text-mid-gray text-lg leading-relaxed">
-                PSPs and marketplaces paying sellers, treasuries managing USD↔EUR exposure, funds/market makers moving collateral, and fintechs/exchanges needing dependable stablecoin rails.
-              </p>
-              
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link
-                  href="https://form.typeform.com/to/HkuIZife"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    aria-label="Get started"
-                    className="bg-[#cbff00] text-black transition-colors hover:bg-[#cbff00]/90"
-                  >
-                    Get Early Access
-                  </Button>
-                </Link>
-                <Link href="/blog">
-                  <Button
-                    aria-label="Learn more"
-                    variant={'secondary'}
-                    className="border-[#cbff00]/30 transition-colors hover:border-[#cbff00]/60 hover:text-[#cbff00]"
-                  >
-                    Learn more
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-export default AspectUsdtToEur;
+export default AspectUsdcToUsd;

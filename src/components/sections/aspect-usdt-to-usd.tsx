@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import AspectFaqUsdtEur from './aspect-faq-usdt-eur';
+import AspectFaqUsdtUsd from './aspect-faq-usdt-usd';
 
-const AspectUsdtToEur = () => {
+const AspectUsdtToUsd = () => {
   return (
     <section className="bg-obsidian relative overflow-hidden px-2.5 lg:px-0">
       <div className="container border border-transparent p-0">
@@ -18,19 +18,18 @@ const AspectUsdtToEur = () => {
           </div>
           
           <div className="relative max-w-6xl mx-auto">
-
             {/* Main Heading */}
             <div className="text-center mb-12">
               <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                 <span className="block mb-2">Convert</span>
-                <span className="text-[#cbff00] block mb-2">USDT → EUR</span>
+                <span className="text-[#cbff00] block mb-2">USDT → USD</span>
                 <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal">
                   at institutional scale
                 </span>
               </h1>
               
               <p className="text-mid-gray mx-auto max-w-3xl text-lg md:text-xl lg:text-2xl font-light leading-relaxed">
-                Two ways to settle: <span className="text-[#cbff00] font-medium">SEPA to your IBAN</span> or <span className="text-[#cbff00] font-medium">on-chain as EURC</span>. 
+                Two ways to settle: <span className="text-[#cbff00] font-medium">wire/SWIFT to your bank</span> or <span className="text-[#cbff00] font-medium">on-chain as USDC</span>. 
                 Best net rates, policy-aware routing, audit-ready documentation.
               </p>
             </div>
@@ -57,13 +56,13 @@ const AspectUsdtToEur = () => {
                   <p className="text-[#cbff00] text-xs md:text-sm font-medium">Convert</p>
                 </div>
 
-                {/* EUR */}
+                {/* USD */}
                 <div className="text-center">
-                  <div className="bg-gradient-to-br from-[#003399] to-[#002266] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
-                    <span className="text-white font-bold text-lg md:text-xl">€</span>
+                  <div className="bg-gradient-to-br from-[#1e3a8a] to-[#1e40af] mb-3 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full shadow-lg">
+                    <span className="text-white font-bold text-lg md:text-xl">$</span>
                   </div>
-                  <p className="text-foreground font-semibold text-sm md:text-base">EUR</p>
-                  <p className="text-mid-gray text-xs md:text-sm">Euro</p>
+                  <p className="text-foreground font-semibold text-sm md:text-base">USD</p>
+                  <p className="text-mid-gray text-xs md:text-sm">Dollar</p>
                 </div>
               </div>
             </div>
@@ -79,7 +78,7 @@ const AspectUsdtToEur = () => {
                   </div>
                   <h3 className="text-foreground text-lg font-semibold">Bank Settlement</h3>
                 </div>
-                <p className="text-mid-gray text-sm">SEPA transfer to your IBAN • Same/next day</p>
+                <p className="text-mid-gray text-sm">Wire/SWIFT to your USD account • Same/next day</p>
               </div>
               
               <div className="border border-[#cbff00]/20 rounded-lg p-6 bg-[#cbff00]/5 hover:bg-[#cbff00]/10 transition-colors">
@@ -91,7 +90,7 @@ const AspectUsdtToEur = () => {
                   </div>
                   <h3 className="text-foreground text-lg font-semibold">On-chain Settlement</h3>
                 </div>
-                <p className="text-mid-gray text-sm">Receive EURC in your wallet • Instant</p>
+                <p className="text-mid-gray text-sm">Receive USDC in your wallet • Instant</p>
               </div>
             </div>
 
@@ -122,7 +121,6 @@ const AspectUsdtToEur = () => {
                 </Button>
               </Link>
             </div>
-
           </div>
         </div>
 
@@ -142,7 +140,7 @@ const AspectUsdtToEur = () => {
                   Get a live quote
                 </h3>
                 <p className="text-mid-gray">
-                  For USDT → EUR (bank) or USDT → EURC (wallet). See the best net rate upfront.
+                  For USDT → USD (bank) or USDT → USDC (wallet/custody). See the best net rate upfront.
                 </p>
               </div>
               
@@ -183,23 +181,23 @@ const AspectUsdtToEur = () => {
             <div className="grid gap-8 md:grid-cols-2">
               <div className="border border-[#cbff00]/20 rounded-lg p-6">
                 <h3 className="text-foreground mb-4 text-2xl font-semibold">
-                  USDT → EUR (IBAN)
+                  USDT → USD (bank)
                 </h3>
                 <p className="text-mid-gray mb-4">
-                  Send USDT, receive euros in your company bank account. Typical posting same day or next business day in supported corridors.
+                  Send USDT, receive dollars in your corporate USD account. Typical posting same day or next business day in supported corridors; exact timing is shown before you confirm.
                 </p>
                 <div className="flex items-center gap-2 text-[#cbff00]">
-                  <span className="text-sm font-medium">SEPA Transfer</span>
+                  <span className="text-sm font-medium">Wire/SWIFT Transfer</span>
                   <span>→</span>
                 </div>
               </div>
               
               <div className="border border-[#cbff00]/20 rounded-lg p-6">
                 <h3 className="text-foreground mb-4 text-2xl font-semibold">
-                  USDT → EURC (wallet)
+                  USDT → USDC (wallet)
                 </h3>
                 <p className="text-mid-gray mb-4">
-                  Prefer to stay on-chain? Receive EURC with the same low-bps pricing and documentation.
+                  Prefer to stay on-chain? Receive USDC with the same low-bps pricing and documentation.
                 </p>
                 <div className="flex items-center gap-2 text-[#cbff00]">
                   <span className="text-sm font-medium">On-chain</span>
@@ -241,7 +239,7 @@ const AspectUsdtToEur = () => {
                     Wallet or bank
                   </h3>
                   <p className="text-mid-gray">
-                    One flow to settle on-chain or to IBAN.
+                    One flow to settle on-chain or to a USD account.
                   </p>
                 </div>
               </div>
@@ -292,44 +290,44 @@ const AspectUsdtToEur = () => {
         </div>
 
         {/* FAQ Section */}
-        <AspectFaqUsdtEur />
-      </div>
+        <AspectFaqUsdtUsd />
 
-      {/* Who it's for section */}
-      <div className="bg-obsidian relative overflow-hidden px-2.5 py-16 lg:px-0 md:py-24">
-        <div className="container border border-transparent p-0">
-          <div className="px-6 md:px-16">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-foreground mb-8 text-3xl font-bold lg:text-4xl">
-                Who it's <span className="text-[#cbff00]">for</span>
-              </h2>
-              
-              <p className="text-mid-gray text-lg leading-relaxed">
-                PSPs and marketplaces paying sellers, treasuries managing USD↔EUR exposure, funds/market makers moving collateral, and fintechs/exchanges needing dependable stablecoin rails.
-              </p>
-              
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link
-                  href="https://form.typeform.com/to/HkuIZife"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    aria-label="Get started"
-                    className="bg-[#cbff00] text-black transition-colors hover:bg-[#cbff00]/90"
+        {/* Who it's for section */}
+        <div className="bg-obsidian relative overflow-hidden px-2.5 py-16 lg:px-0 md:py-24">
+          <div className="container border border-transparent p-0">
+            <div className="px-6 md:px-16">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-foreground mb-8 text-3xl font-bold lg:text-4xl">
+                  Who it's <span className="text-[#cbff00]">for</span>
+                </h2>
+                
+                <p className="text-mid-gray text-lg leading-relaxed">
+                  PSPs & marketplaces paying sellers, treasuries managing USD liquidity, funds/market makers moving collateral, and fintechs/exchanges needing dependable rails.
+                </p>
+                
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <Link
+                    href="https://form.typeform.com/to/HkuIZife"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Get Early Access
-                  </Button>
-                </Link>
-                <Link href="/blog">
-                  <Button
-                    aria-label="Learn more"
-                    variant={'secondary'}
-                    className="border-[#cbff00]/30 transition-colors hover:border-[#cbff00]/60 hover:text-[#cbff00]"
-                  >
-                    Learn more
-                  </Button>
-                </Link>
+                    <Button
+                      aria-label="Get started"
+                      className="bg-[#cbff00] text-black transition-colors hover:bg-[#cbff00]/90"
+                    >
+                      Get Early Access
+                    </Button>
+                  </Link>
+                  <Link href="/blog">
+                    <Button
+                      aria-label="Learn more"
+                      variant={'secondary'}
+                      className="border-[#cbff00]/30 transition-colors hover:border-[#cbff00]/60 hover:text-[#cbff00]"
+                    >
+                      Read more
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -339,4 +337,4 @@ const AspectUsdtToEur = () => {
   );
 };
 
-export default AspectUsdtToEur;
+export default AspectUsdtToUsd;

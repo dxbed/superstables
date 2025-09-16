@@ -10,6 +10,8 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 
@@ -31,6 +33,24 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const ITEMS = [
+    {
+      label: 'Resources',
+      href: '#',
+      dropdownItems: [
+        {
+          label: 'USDT to EUR',
+          href: '/usdt-to-eur',
+        },
+        {
+          label: 'USDT to USD',
+          href: '/usdt-to-usd',
+        },
+        {
+          label: 'USDC to USD',
+          href: '/usdc-to-usd',
+        },
+      ],
+    },
     {
       label: 'Blog',
       href: '/blog',
@@ -60,15 +80,39 @@ const Navbar = () => {
               <NavigationMenuList>
                 {ITEMS.map((link) => (
                   <NavigationMenuItem key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        'text-foreground hover:text-muted-foreground p-2 text-sm',
-                        pathname === link.href && 'text-muted-foreground',
-                      )}
-                    >
-                      {link.label}
-                    </Link>
+                    {link.dropdownItems ? (
+                      <>
+                        <NavigationMenuTrigger className="text-foreground hover:text-muted-foreground p-2 text-sm">
+                          {link.label}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <div className="bg-obsidian border border-[#cbff00]/20 rounded-md p-2 w-48">
+                            {link.dropdownItems.map((item) => (
+                              <Link
+                                key={item.label}
+                                href={item.href}
+                                className={cn(
+                                  'text-foreground hover:text-[#cbff00] block px-3 py-2 text-sm rounded-md hover:bg-[#cbff00]/5 transition-colors',
+                                  pathname === item.href && 'text-[#cbff00] bg-[#cbff00]/5',
+                                )}
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          'text-foreground hover:text-muted-foreground p-2 text-sm',
+                          pathname === link.href && 'text-muted-foreground',
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
@@ -141,17 +185,41 @@ const Navbar = () => {
         <div className="h-[calc(100vh-80px)] border-x border-transparent px-5">
           <nav className="mt-6 flex flex-1 flex-col gap-6">
             {ITEMS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={cn(
-                  'text-foreground text-lg tracking-[-0.36px]',
-                  pathname === link.href && 'text-muted-foreground',
+              <div key={link.label}>
+                {link.dropdownItems ? (
+                  <div>
+                    <div className="text-foreground text-lg tracking-[-0.36px] mb-2">
+                      {link.label}
+                    </div>
+                    <div className="ml-4 space-y-2">
+                      {link.dropdownItems.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className={cn(
+                            'text-muted-foreground hover:text-[#cbff00] block text-base transition-colors',
+                            pathname === item.href && 'text-[#cbff00]',
+                          )}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'text-foreground text-lg tracking-[-0.36px]',
+                      pathname === link.href && 'text-muted-foreground',
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
                 )}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              </div>
             ))}
           </nav>
         </div>
