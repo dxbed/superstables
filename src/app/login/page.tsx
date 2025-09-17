@@ -1,8 +1,47 @@
+import type { Metadata } from 'next';
 import { FcGoogle } from 'react-icons/fc';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+
+export const metadata: Metadata = {
+  title: 'Login - Superstables',
+  description:
+    'Access your Superstables account to manage stablecoin and fiat operations. Secure login for institutional clients.',
+  keywords: [
+    'login',
+    'account access',
+    'institutional login',
+    'secure access',
+    'client portal',
+    'stablecoin platform',
+  ],
+  openGraph: {
+    title: 'Login - Superstables',
+    description:
+      'Access your Superstables account to manage stablecoin and fiat operations. Secure login for institutional clients.',
+    url: 'https://superstables.com/login',
+    siteName: 'Superstables',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Superstables Login',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Login - Superstables',
+    description:
+      'Access your Superstables account to manage stablecoin and fiat operations. Secure login for institutional clients.',
+    images: ['/og-image.jpg'],
+  },
+};
 
 const Login = () => {
   return (

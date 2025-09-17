@@ -1,9 +1,49 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+
+export const metadata: Metadata = {
+  title: 'Sign Up - Superstables',
+  description:
+    'Join Superstables to access institutional-grade stablecoin and fiat operations. Start your journey with secure, compliant financial infrastructure.',
+  keywords: [
+    'sign up',
+    'register',
+    'institutional signup',
+    'stablecoin platform',
+    'fiat operations',
+    'financial infrastructure',
+    'compliance',
+  ],
+  openGraph: {
+    title: 'Sign Up - Superstables',
+    description:
+      'Join Superstables to access institutional-grade stablecoin and fiat operations. Start your journey with secure, compliant financial infrastructure.',
+    url: 'https://superstables.com/signup',
+    siteName: 'Superstables',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Superstables Sign Up',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sign Up - Superstables',
+    description:
+      'Join Superstables to access institutional-grade stablecoin and fiat operations. Start your journey with secure, compliant financial infrastructure.',
+    images: ['/og-image.jpg'],
+  },
+};
 
 const Signup = () => {
   return (
