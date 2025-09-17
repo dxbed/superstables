@@ -1,5 +1,3 @@
-'use client';
-
 import type { Metadata } from 'next';
 
 import CookiePolicy from './cookie-policy.mdx';
