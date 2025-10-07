@@ -38,8 +38,7 @@ const AspectHero = () => {
           </h1>
 
           <p className="font-inter-tight text-mid-gray max-w-3xl text-base md:text-lg lg:text-xl">
-            Manage stablecoin and fiat company operations with instant on/off
-            ramps, earning products and compliant accounts.
+            Pioneering off-exchange clearing and settlement with instant ramps, earning products, and full compliance.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

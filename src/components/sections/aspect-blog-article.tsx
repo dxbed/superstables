@@ -78,9 +78,9 @@ const AspectBlogArticle = () => {
             '@context': 'https://schema.org',
             '@type': 'Article',
             headline:
-              'Introducing Superstables - Stablecoin and fiat swaps for institutions',
+              'Introducing Superstables - Off-exchange clearing and settlement for institutions',
             description:
-              "Today we're introducing Superstables: a simple way for companies to turn stablecoins into euros—and back—at low basis points. You choose how to settle: on-chain to a wallet or straight to your bank account via SEPA.",
+              "Today we're introducing Superstables: pioneering off-exchange clearing and settlement for institutional stablecoin operations. Instant ramps, earning products, and full compliance—all without traditional exchange dependencies.",
             image: '/og-image.jpg',
             author: {
               '@type': 'Organization',
@@ -190,7 +190,7 @@ const AspectBlogArticle = () => {
                   ref={(ref) => addSectionRef('section1', ref)}
                   className="prose dark:prose-invert my-8"
                 >
-                  <h2 className="text-foreground">How It Works</h2>
+                  <h2 className="text-foreground">How Off-Exchange Clearing Works</h2>
                   <p className="text-mid-gray">
                     Superstables starts where most businesses actually need
                     help: moving value between USDC and EURC, and cashing out
@@ -349,7 +349,7 @@ const AspectBlogArticle = () => {
                             : 'text-mid-gray hover:text-[#cbff00]',
                         )}
                       >
-                        How It Works
+                        How Off-Exchange Clearing Works
                       </a>
                     </li>
                     <li>

@@ -14,14 +14,14 @@ const AspectWorldMap = () => {
             <div className="flex max-w-lg flex-col items-center justify-center px-5">
               <p className="text-foreground mb-4 text-center text-2xl lg:text-4xl">
                 <span className="text-[#cbff00]">Stablecoins</span> ↔ EUR &
-                USD. Worldwide.
+                USD. MiCA compliant.
               </p>
               <Button
                 aria-label="Get started"
                 size="sm"
                 className="bg-[#cbff00] text-black transition-colors hover:bg-[#cbff00]/90"
               >
-                Start My Free Trial
+                Get Early Access
               </Button>
             </div>
           </div>

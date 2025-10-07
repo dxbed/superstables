@@ -8,7 +8,7 @@ import AspectWorldMap from '@/components/sections/aspect-world-map';
 export const metadata: Metadata = {
   title: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
   description:
-    'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
+    'Superstables is a platform to swap stablecoins for fiat at institutional scale. Pioneering off-exchange clearing and settlement with instant ramps, earning products, and full compliance.',
   keywords: [
     'stablecoins',
     'fiat',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
     description:
-      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
+      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Pioneering off-exchange clearing and settlement with instant ramps, earning products, and full compliance.',
     url: 'https://superstables.com',
     siteName: 'Superstables',
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Superstables - Swap Stablecoins for Fiat at Institutional Scale',
     description:
-      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Manage stablecoin and fiat company operations with instant on/off ramps, earning products and compliant accounts.',
+      'Superstables is a platform to swap stablecoins for fiat at institutional scale. Pioneering off-exchange clearing and settlement with instant ramps, earning products, and full compliance.',
     images: ['/og-image.jpg'],
   },
 };
