@@ -1,18 +1,18 @@
-import React from "react"
+import React from 'react';
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils';
 
 export interface OrbitingCirclesProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string
-  children?: React.ReactNode
-  reverse?: boolean
-  duration?: number
-  delay?: number
-  radius?: number
-  path?: boolean
-  iconSize?: number
-  speed?: number
+  className?: string;
+  children?: React.ReactNode;
+  reverse?: boolean;
+  duration?: number;
+  delay?: number;
+  radius?: number;
+  path?: boolean;
+  iconSize?: number;
+  speed?: number;
 }
 
 export function OrbitingCircles({
@@ -26,7 +26,7 @@ export function OrbitingCircles({
   speed = 1,
   ...props
 }: OrbitingCirclesProps) {
-  const calculatedDuration = duration / speed
+  const calculatedDuration = duration / speed;
   return (
     <>
       {path && (
@@ -45,28 +45,28 @@ export function OrbitingCircles({
         </svg>
       )}
       {React.Children.map(children, (child, index) => {
-        const angle = (360 / React.Children.count(children)) * index
+        const angle = (360 / React.Children.count(children)) * index;
         return (
           <div
             style={
               {
-                "--duration": calculatedDuration,
-                "--radius": radius,
-                "--angle": angle,
-                "--icon-size": `${iconSize}px`,
+                '--duration': calculatedDuration,
+                '--radius': radius,
+                '--angle': angle,
+                '--icon-size': `${iconSize}px`,
               } as React.CSSProperties
             }
             className={cn(
               `animate-orbit absolute flex size-[var(--icon-size)] transform-gpu items-center justify-center rounded-full`,
-              { "[animation-direction:reverse]": reverse },
-              className
+              { '[animation-direction:reverse]': reverse },
+              className,
             )}
             {...props}
           >
             {child}
           </div>
-        )
+        );
       })}
     </>
-  )
+  );
 }

@@ -190,7 +190,9 @@ const AspectBlogArticle = () => {
                   ref={(ref) => addSectionRef('section1', ref)}
                   className="prose dark:prose-invert my-8"
                 >
-                  <h2 className="text-foreground">How Off-Exchange Clearing Works</h2>
+                  <h2 className="text-foreground">
+                    How Off-Exchange Clearing Works
+                  </h2>
                   <p className="text-mid-gray">
                     Superstables starts where most businesses actually need
                     help: moving value between USDC and EURC, and cashing out
