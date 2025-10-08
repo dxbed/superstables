@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import AspectComparison from '@/components/sections/aspect-comparison';
 import AspectDashboard from '@/components/sections/aspect-dashboard';
 import AspectHero from '@/components/sections/aspect-hero';
 import AspectSeparator from '@/components/sections/aspect-separator';
@@ -59,6 +60,7 @@ export default function Home() {
       <AspectHero />
       <AspectWorldMap />
       <AspectDashboard />
+      <AspectComparison />
       <AspectSeparator />
     </>
   );
