@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superstables</title>
+<meta name="description" content="The payment router for AI agents. One CLI, one SDK, one MCP server — pay and get paid across every rail, chain and stablecoin. Non-custodial, open source, built in Lisbon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #0A0C0E;
+    --bg-2: #111417;
+    --bg-3: #171B1F;
+    --line: #1F252B;
+    --line-2: #2B333A;
+    --ink: #E9EDE6;
+    --ink-2: #98A39A;
+    --ink-3: #5E6862;
+    --lime: #CBFF00;
+    --lime-ink: #0A0C0E;
+    --lime-dim: rgba(203, 255, 0, 0.10);
+    --lime-line: rgba(203, 255, 0, 0.35);
+    --down: #FF7A6B;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --max: 1180px;
+    --gutter: clamp(20px, 4vw, 48px);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+  ::selection { background: var(--lime); color: var(--lime-ink); }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; letter-spacing: -0.025em; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(40px, 6vw, 80px); line-height: 0.98; font-variation-settings: "opsz" 96; }
+  h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.05; font-variation-settings: "opsz" 60; }
+  h3 { font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .lede { font-size: clamp(17px, 1.35vw, 19px); color: var(--ink-2); max-width: 56ch; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); display: inline-flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px var(--lime-dim); }
+  .eyebrow.plain::before { display: none; }
+  .mono { font-family: var(--mono); }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ---------- nav ---------- */
+  .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -0.02em; }
+  .logo svg { width: 22px; height: 22px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14.5px; color: var(--ink-2); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { display: flex; align-items: center; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; font-size: 14px; font-weight: 600; border: 1px solid var(--line-2); border-radius: 3px; color: var(--ink); background: transparent; cursor: pointer; font-family: var(--body); transition: border-color .15s, background .15s, color .15s; white-space: nowrap; }
+  .btn:hover { border-color: var(--ink-3); background: var(--bg-2); }
+  .btn.primary { background: var(--lime); color: var(--lime-ink); border-color: var(--lime); }
+  .btn.primary:hover { background: #D9FF3D; border-color: #D9FF3D; }
+  .btn.lg { height: 48px; padding: 0 20px; font-size: 15px; }
+  .install { display: inline-flex; align-items: center; gap: 14px; height: 48px; padding: 0 8px 0 16px; border: 1px solid var(--line-2); border-radius: 3px; background: var(--bg-2); font-family: var(--mono); font-size: 14px; color: var(--ink); }
+  .install .dollar { color: var(--ink-3); }
+  .install button { height: 32px; padding: 0 10px; border: 0; border-radius: 2px; background: var(--bg-3); color: var(--ink-2); font-family: var(--body); font-size: 12.5px; font-weight: 600; cursor: pointer; }
+  .install button:hover { color: var(--ink); }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(56px, 8vw, 112px) 0 clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: auto -10% -40% 30%; height: 70%; background: radial-gradient(ellipse at center, rgba(203,255,0,.07), transparent 60%); pointer-events: none; }
+  .hero .grid { align-items: center; }
+  .hero-copy { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 28px; }
+  .hero-copy h1 em { font-style: normal; color: var(--lime); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--ink-2); }
+  .hero-meta span::before { content: "— "; color: var(--ink-3); }
+  .hero-demo { grid-column: 7 / span 6; }
+  @media (max-width: 960px) { .hero-copy, .hero-demo { grid-column: 1 / -1; } }
+
+  /* terminal */
+  .term { background: #07090B; border: 1px solid var(--line-2); border-radius: 6px; box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(203,255,0,.04); font-family: var(--mono); font-size: 13px; line-height: 1.6; overflow: hidden; }
+  .term-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--ink-3); font-size: 11.5px; }
+  .term-bar .dots { display: flex; gap: 6px; }
+  .term-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); display: block; }
+  .term-body { padding: 16px 18px 18px; min-height: 392px; overflow-x: auto; }
+  .term-body > div { white-space: pre; opacity: 0; transform: translateY(3px); transition: opacity .25s, transform .25s; }
+  .term-body > div.on { opacity: 1; transform: none; }
+  .t-prompt { color: var(--ink-3); }
+  .t-cmd { color: var(--ink); }
+  .t-kw { color: #9ED1FF; }
+  .t-str { color: #D4E6A5; }
+  .t-dim { color: var(--ink-3); }
+  .t-muted { color: var(--ink-2); }
+  .t-ok { color: var(--lime); }
+  .t-down { color: var(--down); }
+  .t-pick { background: var(--lime-dim); color: var(--lime); border-radius: 2px; padding: 0 4px; margin-left: -4px; }
+  .cursor { display: inline-block; width: 8px; height: 14px; background: var(--lime); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .term-foot { display: flex; justify-content: space-between; padding: 10px 14px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-3); }
+
+  /* ---------- sections ---------- */
+  section { padding: clamp(64px, 8vw, 120px) 0; border-bottom: 1px solid var(--line); }
+  .section-head { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: clamp(40px, 5vw, 64px); }
+  .section-head .eyebrow { grid-column: 1 / span 3; align-self: start; padding-top: 8px; }
+  .section-head h2 { grid-column: 4 / span 6; }
+  .section-head .lede { grid-column: 4 / span 6; margin-top: 16px; }
+  @media (max-width: 860px) { .section-head .eyebrow, .section-head h2, .section-head .lede { grid-column: 1 / -1; } .section-head .eyebrow { padding-top: 0; } }
+
+  /* rails strip */
+  .rails { padding: 28px 0; border-bottom: 1px solid var(--line); }
+  .rails .wrap { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; }
+  .rails-label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+  .rail-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-family: var(--mono); font-size: 12.5px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink-2); display: inline-flex; gap: 8px; align-items: center; }
+  .chip b { font-weight: 500; color: var(--ink); }
+  .chip small { color: var(--ink-3); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
+  @media (max-width: 760px) { .rails .wrap { grid-template-columns: 1fr; gap: 14px; } }
+
+  /* problem / routing diagram */
+  .route-diagram { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-2); padding: 24px; overflow-x: auto; }
+  .route-diagram svg { width: 100%; min-width: 720px; height: auto; display: block; font-family: var(--mono); }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .three > div { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line-2); }
+  .three p { color: var(--ink-2); font-size: 15px; }
+  @media (max-width: 760px) { .three { grid-template-columns: 1fr; } }
+
+  /* two-line API */
+  .api { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .code-card { border: 1px solid var(--line-2); border-radius: 6px; background: #07090B; overflow: hidden; display: flex; flex-direction: column; }
+  .code-card header { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .code-card header h3 { font-size: 17px; }
+  .code-card header span { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); }
+  .code-card pre { margin: 0; padding: 18px; font-family: var(--mono); font-size: 13px; line-height: 1.65; overflow-x: auto; color: var(--ink); flex: 1; }
+  .code-card footer { padding: 14px 18px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 14px; }
+  .c-com { color: var(--ink-3); }
+  .c-kw { color: #9ED1FF; }
+  .c-str { color: #D4E6A5; }
+  .c-fn { color: var(--lime); }
+  @media (max-width: 860px) { .api { grid-template-columns: 1fr; } }
+
+  /* control plane */
+  .control { display: grid; grid-template-columns: 5fr 7fr; gap: 24px; align-items: start; }
+  .policy { border: 1px solid var(--line-2); border-radius: 6px; background: #07090B; }
+  .policy header { padding: 12px 18px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); display: flex; justify-content: space-between; }
+  .policy pre { margin: 0; padding: 18px; font-family: var(--mono); font-size: 13px; line-height: 1.65; overflow-x: auto; }
+  .guards { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .guard { padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; background: var(--bg-2); }
+  .guard:nth-child(2n) { border-right: 0; }
+  .guard:nth-last-child(-n+2) { border-bottom: 0; }
+  .guard h3 { font-size: 16px; }
+  .guard p { font-size: 14px; color: var(--ink-2); }
+  .guard .k { font-family: var(--mono); font-size: 11px; color: var(--lime); letter-spacing: .1em; text-transform: uppercase; }
+  @media (max-width: 960px) { .control { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .guards { grid-template-columns: 1fr; } .guard { border-right: 0; } .guard:nth-last-child(2) { border-bottom: 1px solid var(--line); } }
+
+  /* neutrality */
+  .neutral { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .neutral blockquote { grid-column: 1 / span 7; margin: 0; font-family: var(--display); font-size: clamp(26px, 3vw, 40px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 400; text-wrap: balance; }
+  .neutral blockquote em { font-style: normal; color: var(--lime); }
+  .principles { grid-column: 9 / span 4; display: flex; flex-direction: column; }
+  .principles div { padding: 16px 0; border-top: 1px solid var(--line-2); display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline; }
+  .principles div:last-child { border-bottom: 1px solid var(--line-2); }
+  .principles b { font-weight: 500; }
+  .principles span { font-family: var(--mono); font-size: 12px; color: var(--lime); }
+  @media (max-width: 860px) { .neutral blockquote, .principles { grid-column: 1 / -1; } }
+
+  /* roadmap */
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .phase { padding: 26px 24px 28px; border-right: 1px solid var(--line); background: var(--bg-2); display: flex; flex-direction: column; gap: 14px; position: relative; }
+  .phase:last-child { border-right: 0; }
+  .phase.now { background: linear-gradient(180deg, rgba(203,255,0,.06), transparent 50%); }
+  .phase .idx { font-family: var(--mono); font-size: 12px; color: var(--ink-3); display: flex; justify-content: space-between; }
+  .phase.now .idx { color: var(--lime); }
+  .phase h3 { font-size: 24px; }
+  .phase ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--ink-2); }
+  .phase li { padding-left: 14px; position: relative; }
+  .phase li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 1px; background: var(--ink-3); }
+  .phase .gate { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line-2); font-size: 13px; color: var(--ink-2); }
+  .phase .gate b { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 4px; font-weight: 500; }
+  @media (max-width: 860px) { .phases { grid-template-columns: 1fr; } .phase { border-right: 0; border-bottom: 1px solid var(--line); } .phase:last-child { border-bottom: 0; } }
+
+  /* why now */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .stat { padding-top: 18px; border-top: 1px solid var(--line-2); display: flex; flex-direction: column; gap: 6px; }
+  .stat .v { font-family: var(--display); font-size: clamp(34px, 3.6vw, 48px); line-height: 1; letter-spacing: -0.03em; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .stat .v small { font-size: .5em; color: var(--ink-2); letter-spacing: 0; margin-left: 2px; }
+  .stat .l { font-size: 14px; color: var(--ink-2); }
+  .source { margin-top: 28px; font-size: 12.5px; color: var(--ink-3); max-width: 70ch; }
+  @media (max-width: 860px) { .stats { grid-template-columns: 1fr 1fr; } }
+
+  /* lisbon */
+  .lisbon { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: start; }
+  .lisbon h2 { grid-column: 1 / span 5; }
+  .lisbon-list { grid-column: 7 / span 6; display: flex; flex-direction: column; }
+  .lisbon-list div { padding: 18px 0; border-top: 1px solid var(--line-2); display: grid; grid-template-columns: 130px 1fr; gap: 16px; font-size: 15px; color: var(--ink-2); }
+  .lisbon-list div:last-child { border-bottom: 1px solid var(--line-2); }
+  .lisbon-list b { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); font-weight: 500; padding-top: 3px; }
+  @media (max-width: 860px) { .lisbon h2, .lisbon-list { grid-column: 1 / -1; } .lisbon-list div { grid-template-columns: 1fr; gap: 6px; } }
+
+  /* cta */
+  .cta { border-bottom: 0; }
+  .cta-box { border: 1px solid var(--lime-line); border-radius: 6px; padding: clamp(32px, 5vw, 64px); background: radial-gradient(ellipse at 10% 0%, rgba(203,255,0,.10), transparent 55%), var(--bg-2); display: grid; grid-template-columns: 7fr 5fr; gap: 40px; align-items: center; }
+  .cta-box h2 { font-size: clamp(30px, 4vw, 52px); }
+  .cta-form { display: flex; flex-direction: column; gap: 12px; }
+  .cta-form .row { display: flex; gap: 8px; }
+  .cta-form input { flex: 1; height: 48px; padding: 0 14px; border: 1px solid var(--line-2); border-radius: 3px; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; min-width: 0; }
+  .cta-form input::placeholder { color: var(--ink-3); }
+  .cta-form .hint { font-size: 13px; color: var(--ink-2); }
+  .cta-form .ok { display: none; font-size: 14px; color: var(--lime); }
+  .cta-form.sent .row, .cta-form.sent .hint { display: none; }
+  .cta-form.sent .ok { display: block; }
+  @media (max-width: 860px) { .cta-box { grid-template-columns: 1fr; } }
+
+  /* footer */
+  footer { border-top: 1px solid var(--line); padding: 40px 0 48px; }
+  footer .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 24px; font-size: 14px; color: var(--ink-2); }
+  footer .col { display: flex; flex-direction: column; gap: 10px; }
+  footer .col b { color: var(--ink); font-weight: 500; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-family: var(--mono); margin-bottom: 4px; }
+  footer a:hover { color: var(--ink); }
+  footer .fine { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr 1fr; } }
+
+  /* reveal on scroll */
+  .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; transition: none; }
+    .term-body > div { opacity: 1; transform: none; transition: none; }
+    .cursor { animation: none; }
+    .flow { animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+  .flow { stroke-dasharray: 6 6; animation: flow 1.2s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -12; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h6l2-5 2 10 2-5h4" stroke="#CBFF00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Superstables
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why a router</a>
+      <a href="#api">API</a>
+      <a href="#control">Control plane</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#lisbon">EU</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn" href="#" aria-label="GitHub">GitHub</a>
+      <a class="btn primary" href="#early">Get early access</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Open source · Non-custodial · Built in Lisbon</span>
+      <h1>The payment router for <em>AI agents.</em></h1>
+      <p class="lede">One CLI, one SDK, one MCP server. Your agent calls <code class="mono">pay(url, max)</code> — Superstables detects the protocol, quotes every live rail, and settles the cheapest path from the agent's own wallet, under a cap you control.</p>
+      <div class="hero-actions">
+        <span class="install"><span class="dollar">$</span><span id="install-cmd">npm i -g superstables</span><button type="button" data-copy="npm i -g superstables">Copy</button></span>
+        <a class="btn lg" href="#api">Read the docs</a>
+      </div>
+      <div class="hero-meta">
+        <span>x402 · Stripe MPP · Google AP2 · Virtuals ACP</span>
+        <span>Base · Solana · Tempo</span>
+        <span>USDC · EURC · USDT · PYUSD</span>
+      </div>
+    </div>
+
+    <div class="hero-demo">
+      <div class="term" aria-label="Live routing demo">
+        <div class="term-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span>agent · claude-code · wallet 0x9a3f…c41e</span>
+          <span>live</span>
+        </div>
+        <div class="term-body" id="term"></div>
+        <div class="term-foot"><span>policy: cap 0.05 USDC / call · session 2.00 USDC</span><span>non-custodial · signed locally</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="rails">
+  <div class="wrap">
+    <div class="rails-label">Every rail, one interface</div>
+    <div class="rail-row">
+      <span class="chip"><b>x402</b><small>protocol</small></span>
+      <span class="chip"><b>Stripe MPP</b><small>protocol</small></span>
+      <span class="chip"><b>Google AP2</b><small>mandates</small></span>
+      <span class="chip"><b>Virtuals ACP</b><small>protocol</small></span>
+      <span class="chip"><b>Base</b><small>chain</small></span>
+      <span class="chip"><b>Solana</b><small>chain</small></span>
+      <span class="chip"><b>Tempo</b><small>chain</small></span>
+      <span class="chip"><b>Arc</b><small>chain</small></span>
+      <span class="chip"><b>USDC</b><small>stable</small></span>
+      <span class="chip"><b>EURC</b><small>stable</small></span>
+      <span class="chip"><b>USDT</b><small>stable</small></span>
+      <span class="chip"><b>PYUSD</b><small>stable</small></span>
+    </div>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow plain">Why a router</span>
+      <h2>The rails are built. Nobody connects them.</h2>
+      <p class="lede">Coinbase routes to Base. Stripe routes to Tempo. Every directory lists services but settles nothing. An agent that wants to pay for data today has to learn four protocols, hold three stablecoins and bet on who wins. Superstables sits between every agent and every rail — and is neutral in a way no incumbent can be.</p>
+    </div>
+    <div class="grid rv">
+      <div class="route-diagram">
+        <svg viewBox="0 0 960 300" role="img" aria-label="Agents on the left connect to Superstables in the middle, which routes to rails, chains and stablecoins on the right">
+          <defs>
+            <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#5E6862"/></marker>
+          </defs>
+          <!-- agents -->
+          <g font-size="12" fill="#98A39A">
+            <text x="20" y="30" font-size="10.5" letter-spacing="1.5" fill="#5E6862">AGENTS</text>
+            <g transform="translate(20,50)"><rect width="170" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">claude · mcp</text></g>
+            <g transform="translate(20,96)"><rect width="170" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">langchain agent</text></g>
+            <g transform="translate(20,142)"><rect width="170" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">elizaOS</text></g>
+            <g transform="translate(20,188)"><rect width="170" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">compute buyer</text></g>
+            <g transform="translate(20,234)"><rect width="170" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">your agent</text></g>
+          </g>
+          <!-- lines agents -> router -->
+          <g stroke="#2B333A" stroke-width="1.2" fill="none">
+            <path d="M190 67 C 300 67, 300 150, 400 150"/>
+            <path d="M190 113 C 300 113, 300 150, 400 150"/>
+            <path d="M190 159 L 400 150"/>
+            <path d="M190 205 C 300 205, 300 150, 400 150"/>
+            <path d="M190 251 C 300 251, 300 150, 400 150"/>
+          </g>
+          <path class="flow" d="M190 251 C 300 251, 300 150, 400 150" stroke="#CBFF00" stroke-width="1.4" fill="none"/>
+          <!-- router -->
+          <g transform="translate(400,100)">
+            <rect width="160" height="100" rx="4" fill="#0A0C0E" stroke="#CBFF00" stroke-opacity=".6"/>
+            <text x="80" y="30" text-anchor="middle" font-size="10.5" letter-spacing="1.5" fill="#5E6862">ROUTER</text>
+            <text x="80" y="56" text-anchor="middle" font-size="13" fill="#E9EDE6">detect · quote</text>
+            <text x="80" y="76" text-anchor="middle" font-size="13" fill="#E9EDE6">enforce · settle</text>
+          </g>
+          <!-- lines router -> rails -->
+          <g stroke="#2B333A" stroke-width="1.2" fill="none" marker-end="url(#arr)">
+            <path d="M560 150 C 650 150, 650 67, 760 67"/>
+            <path d="M560 150 C 650 150, 650 113, 760 113"/>
+            <path d="M560 150 L 760 159"/>
+            <path d="M560 150 C 650 150, 650 205, 760 205"/>
+            <path d="M560 150 C 650 150, 650 251, 760 251"/>
+          </g>
+          <path class="flow" d="M560 150 C 650 150, 650 113, 760 113" stroke="#CBFF00" stroke-width="1.4" fill="none"/>
+          <!-- rails -->
+          <g font-size="12">
+            <text x="760" y="30" font-size="10.5" letter-spacing="1.5" fill="#5E6862">RAILS · CHAINS · STABLES</text>
+            <g transform="translate(760,50)"><rect width="180" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">x402 · Base · USDC</text></g>
+            <g transform="translate(760,96)"><rect width="180" height="34" rx="3" fill="#0A0C0E" stroke="#CBFF00" stroke-opacity=".6"/><text x="14" y="22" fill="#CBFF00">x402 · Solana · USDC</text><text x="166" y="22" text-anchor="end" fill="#CBFF00" font-size="10.5">$0.0004</text></g>
+            <g transform="translate(760,142)"><rect width="180" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">MPP · Tempo · USDC</text></g>
+            <g transform="translate(760,188)"><rect width="180" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A"/><text x="14" y="22" fill="#E9EDE6">AP2 · Base · EURC</text></g>
+            <g transform="translate(760,234)"><rect width="180" height="34" rx="3" fill="#0A0C0E" stroke="#2B333A" stroke-dasharray="3 3"/><text x="14" y="22" fill="#5E6862">ACP · Base</text><text x="166" y="22" text-anchor="end" fill="#FF7A6B" font-size="10.5">down</text></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="three rv">
+      <div><h3>Detect</h3><p>Hit any URL. The router reads the 402 challenge, the MPP session, or the AP2 mandate and figures out what the endpoint speaks, on which chain, in which stablecoin.</p></div>
+      <div><h3>Route</h3><p>Every live facilitator is quoted on fee, latency and health. The cheapest compliant path wins; if a rail drops mid-payment, the router fails over instead of failing.</p></div>
+      <div><h3>Settle, never hold</h3><p>Payments are signed from the agent's own smart-contract wallet. Superstables never holds funds — the policy and the ledger are the product, not custody.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="api">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow plain">The whole API</span>
+      <h2>Two lines. Every rail.</h2>
+      <p class="lede">TypeScript and Python SDKs, a CLI for humans, and an MCP server so Claude, Codex and Gemini agents pick it up without a wrapper.</p>
+    </div>
+    <div class="api rv">
+      <div class="code-card">
+        <header><h3>Pay</h3><span>superstables/pay</span></header>
+<pre><code><span class="c-kw">import</span> { pay } <span class="c-kw">from</span> <span class="c-str">"superstables"</span>;
+
+<span class="c-kw">const</span> res = <span class="c-kw">await</span> pay.<span class="c-fn">route</span>(
+  <span class="c-str">"https://api.example.com/v1/prices"</span>,
+  { max: <span class="c-str">"0.05 USDC"</span> }
+);
+
+<span class="c-com">// → protocol: x402 · chain: solana · fee: $0.0004</span>
+<span class="c-com">// → receipt: 0x3f9a…e2c1 · spent: 0.0104 USDC</span>
+res.body  <span class="c-com">// the data you paid for</span></code></pre>
+        <footer>Protocol, chain, stablecoin and facilitator are chosen at call time. Your code never changes when a rail does.</footer>
+      </div>
+      <div class="code-card">
+        <header><h3>Earn</h3><span>superstables/earn</span></header>
+<pre><code><span class="c-kw">import</span> { earn } <span class="c-kw">from</span> <span class="c-str">"superstables"</span>;
+
+app.<span class="c-fn">get</span>(<span class="c-str">"/v1/forecast"</span>,
+  earn.<span class="c-fn">accept</span>({ price: <span class="c-str">"0.01 USDC"</span> }),
+  handler
+);
+
+<span class="c-com">// payable over x402, MPP, AP2 and ACP</span>
+<span class="c-com">// listed in the discovery index automatically</span>
+<span class="c-com">// settles to the agent's treasury wallet</span></code></pre>
+        <footer>One middleware and your agent's service is payable by any other agent, over any rail, and indexed for discovery.</footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="control">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow plain">Principal control plane</span>
+      <h2>Let an agent hold money without losing sleep.</h2>
+      <p class="lede">A prompt injection shouldn't be able to drain a wallet. Policies are enforced on-chain by the agent's smart-contract wallet — not in application code the model can talk its way around.</p>
+    </div>
+    <div class="control rv">
+      <div class="policy">
+        <header><span>superstables.policy.yaml</span><span>enforced on-chain</span></header>
+<pre><code><span class="c-kw">agent</span>: research-bot
+<span class="c-kw">wallet</span>: 0x9a3f…c41e
+
+<span class="c-kw">caps</span>:
+  per_call:   <span class="c-str">0.05 USDC</span>
+  session:    <span class="c-str">2.00 USDC</span>
+  daily:      <span class="c-str">25.00 USDC</span>
+
+<span class="c-kw">allow</span>:
+  - api.example.com
+  - *.nosana.io
+<span class="c-kw">deny</span>:
+  - *.unknown-broker.xyz
+
+<span class="c-kw">approve_above</span>: <span class="c-str">10.00 USDC</span>
+<span class="c-kw">stables</span>: [USDC, EURC]
+<span class="c-kw">kill_switch</span>: on</code></pre>
+      </div>
+      <div class="guards">
+        <div class="guard"><span class="k">caps</span><h3>Per-call, session and daily limits</h3><p>Set once by the principal; the wallet refuses anything above them, whatever the agent was told.</p></div>
+        <div class="guard"><span class="k">lists</span><h3>Allow and deny by domain</h3><p>Pay only the services you've approved. Unknown counterparties never get a signature.</p></div>
+        <div class="guard"><span class="k">approvals</span><h3>Human-in-the-loop above a threshold</h3><p>Large spends pause for a tap on your phone. Small ones flow at machine speed.</p></div>
+        <div class="guard"><span class="k">kill switch</span><h3>Stop everything, instantly</h3><p>One click revokes the agent's signing rights across every rail and chain at once. Anomaly alerts tell you when to use it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="neutral rv">
+      <blockquote>Coinbase will never route to Tempo. Stripe will never route to Base. <em>We route to both</em> — because we don't own a rail, a chain, a stablecoin or your funds.</blockquote>
+      <div class="principles">
+        <div><b>Non-custodial</b><span>day one</span></div>
+        <div><b>Open source core</b><span>Apache 2.0</span></div>
+        <div><b>No token</b><span>ever</span></div>
+        <div><b>Multi-stablecoin</b><span>no USDC lock-in</span></div>
+        <div><b>Public metrics</b><span>verifiable</span></div>
+        <div><b>EU-first compliance</b><span>MiCA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow plain">Roadmap</span>
+      <h2>Router first. Then the agent's treasury. Then its passport.</h2>
+      <p class="lede">Because the router sits in the request path with the agent's wallet and policy, it becomes the natural place for the agent to hold revenue, pay itself, and prove who it is.</p>
+    </div>
+    <div class="phases rv">
+      <div class="phase now">
+        <div class="idx"><span>Phase 1</span><span>Nov 2026 → Apr 2027</span></div>
+        <h3>Router</h3>
+        <ul>
+          <li>CLI, TypeScript &amp; Python SDK, MCP server</li>
+          <li>x402, Stripe MPP, Google AP2 — 3+ rails</li>
+          <li>Base, Solana, Tempo · USDC, EURC, USDT</li>
+          <li>Discovery index incl. DePIN compute</li>
+          <li>Live routing on fee, latency and health</li>
+          <li>Security audit of the pay path</li>
+        </ul>
+        <div class="gate"><b>Gate</b>1,000+ weekly-active installs; routed transactions growing week over week.</div>
+      </div>
+      <div class="phase">
+        <div class="idx"><span>Phase 2</span><span>May 2027 → Apr 2028</span></div>
+        <h3>Treasury</h3>
+        <ul>
+          <li>Agent-held smart-contract treasury wallets</li>
+          <li>Self-payment streams: salary, runway</li>
+          <li>Subscriptions and recurring billing</li>
+          <li>Auto-conversion between stablecoins</li>
+          <li>Audit log, CSV, Xero and QuickBooks exports</li>
+          <li>Multi-agent orgs, roles, SSO, KYT screening</li>
+        </ul>
+        <div class="gate"><b>Gate</b>Meaningful treasury under management; net revenue retention above 120%.</div>
+      </div>
+      <div class="phase">
+        <div class="idx"><span>Phase 3</span><span>May 2028 → Aug 2029</span></div>
+        <h3>Passport</h3>
+        <ul>
+          <li>Know-your-agent attestations tied to a principal</li>
+          <li>Sybil-resistant, stake-weighted reputation</li>
+          <li>ERC-8004 / 8183, Visa TAP, Mastercard Agent Pay compatible</li>
+          <li>EURC-native flows, Travel Rule, MiCA reporting</li>
+          <li>EMI licence or bank partnership in Portugal</li>
+          <li>Fiat on/off-ramps through partners</li>
+        </ul>
+        <div class="gate"><b>Gate</b>Regulated status secured; reputation layer adopted by third parties.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow plain">Why now</span>
+      <h2>Agents already pay in stablecoins. The volume is small; the curve isn't.</h2>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><div class="v num">$73<small>M</small></div><div class="l">settled by agents on-chain in the twelve months to April 2026</div></div>
+      <div class="stat"><div class="v num">176<small>M</small></div><div class="l">machine-to-machine transactions in that period</div></div>
+      <div class="stat"><div class="v num">98.6<small>%</small></div><div class="l">of it in USDC — a concentration worth routing around</div></div>
+      <div class="stat"><div class="v num">$0.31<small>–0.48</small></div><div class="l">average ticket, below the fee floor of any card network</div></div>
+    </div>
+    <p class="source rv">Figures from Keyrock, "Who Pays the Agent?", Coinbase, Circle and Artemis/CoinDesk analysis, August 2026. Headline protocol counts overstate real commerce; we publish our own routed volume as independently verifiable on-chain metrics.</p>
+  </div>
+</section>
+
+<section id="lisbon">
+  <div class="wrap">
+    <div class="lisbon rv">
+      <h2>Built in Lisbon, because Europe is the part nobody else is building.</h2>
+      <div class="lisbon-list">
+        <div><b>MiCA</b><span>Fully enforced since July 2026. Compliance is slow and expensive to acquire — a moat that money alone doesn't buy quickly, and one every US incumbent is behind on.</span></div>
+        <div><b>EURC</b><span>Euro stablecoins are under-served and no agent-payment product is EURC-native. We route EURC as a first-class asset from day one.</span></div>
+        <div><b>Licensing</b><span>EMI licensing through Banco de Portugal, pursued in Phase 3 once traction justifies the 12–18 months it takes.</span></div>
+        <div><b>Ecosystem</b><span>ETHLisbon, Web Summit, a deep crypto and AI talent pool, and EU instruments built for infrastructure plays.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="early">
+  <div class="wrap">
+    <div class="cta-box rv">
+      <div>
+        <span class="eyebrow">Early access · Phase 1 opens November 2026</span>
+        <h2 style="margin-top:16px">Give your agent a way to pay.</h2>
+        <p class="lede" style="margin-top:16px">We're onboarding agent builders, data and compute APIs, and a handful of design partners. Tell us what your agent needs to buy.</p>
+      </div>
+      <form class="cta-form" id="waitlist" novalidate>
+        <div class="row">
+          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address">
+          <button class="btn primary lg" type="submit">Request access</button>
+        </div>
+        <p class="hint">No token, no airdrop, no spam. We'll write when the router is ready for you.</p>
+        <p class="ok">Thanks — you're on the list. We'll be in touch before the Phase 1 release.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="col">
+      <a class="logo" href="#"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h6l2-5 2 10 2-5h4" stroke="#CBFF00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Superstables</a>
+      <p style="max-width:34ch">The payment router for AI agents. Neutral, non-custodial, open source. Lisbon, Portugal.</p>
+    </div>
+    <div class="col"><b>Product</b><a href="#api">Docs</a><a href="#why">Rails</a><a href="#control">Control plane</a><a href="#roadmap">Roadmap</a></div>
+    <div class="col"><b>Developers</b><a href="#">GitHub</a><a href="#">npm</a><a href="#">PyPI</a><a href="#">MCP server</a><a href="#">Status &amp; metrics</a></div>
+    <div class="col"><b>Company</b><a href="#lisbon">Why Lisbon</a><a href="#">Blog</a><a href="#">X</a><a href="#">Contact</a></div>
+    <div class="fine"><span>© 2026 Superstables. Non-custodial software; we never hold customer funds.</span><span class="mono">MiCA-aligned · Apache 2.0 · no token</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // ---- hero terminal sequence ----
+  const term = document.getElementById('term');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const lines = [
+    { t: 120, h: '<span class="t-prompt">$</span> <span class="t-cmd">superstables pay</span> <span class="t-str">https://api.example.com/v1/prices</span> <span class="t-kw">--max</span> <span class="t-str">0.05</span> <span class="t-str">USDC</span>' },
+    { t: 500, h: '' },
+    { t: 200, h: '<span class="t-muted">→ detecting</span>   <span class="t-dim">HTTP 402 · x402 v2 · accepts USDC on base, solana</span>' },
+    { t: 450, h: '<span class="t-muted">→ quoting</span>     <span class="t-dim">4 facilitators, 3 chains</span>' },
+    { t: 260, h: '  <span class="t-dim">x402   · base    · usdc</span>   fee <span class="num">$0.0011</span>   <span class="t-dim">~1.9s</span>' },
+    { t: 180, h: '  <span class="t-pick">x402   · solana  · usdc   fee $0.0004   ~0.4s  ✓ cheapest</span>' },
+    { t: 180, h: '  <span class="t-dim">mpp    · tempo   · usdc</span>   fee <span class="num">$0.0009</span>   <span class="t-dim">~0.8s</span>' },
+    { t: 180, h: '  <span class="t-dim">ap2    · base    · eurc</span>   <span class="t-down">unfunded</span>' },
+    { t: 420, h: '<span class="t-muted">→ policy</span>      <span class="t-ok">0.0104 USDC ≤ 0.05 cap</span> <span class="t-dim">· session 1.87 → 1.86 left</span>' },
+    { t: 420, h: '<span class="t-muted">→ signing</span>     <span class="t-dim">smart-wallet 0x9a3f…c41e · local key</span>' },
+    { t: 700, h: '<span class="t-muted">→ settled</span>     <span class="t-ok">✓</span> <span class="t-dim">receipt 5Kq9…wP2t · solana · 412ms</span>' },
+    { t: 300, h: '' },
+    { t: 200, h: '<span class="t-dim">{ "BTC": 118420.11, "ETH": 4871.30, "SOL": 244.02 … }</span>' },
+    { t: 2600, h: '<span class="t-prompt">$</span> <span class="cursor"></span>' }
+  ];
+  function run() {
+    term.innerHTML = '';
+    let delay = 0;
+    lines.forEach((l) => {
+      delay += reduced ? 0 : l.t;
+      setTimeout(() => {
+        const d = document.createElement('div');
+        d.innerHTML = l.h || '&nbsp;';
+        term.appendChild(d);
+        void d.offsetWidth; // force a frame so the transition runs, even in hidden tabs
+        d.classList.add('on');
+      }, delay);
+    });
+    if (!reduced) setTimeout(run, delay + 3800);
+  }
+  run();
+
+  // ---- copy install ----
+  document.querySelectorAll('[data-copy]').forEach((b) => {
+    b.addEventListener('click', () => {
+      navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy);
+      const o = b.textContent; b.textContent = 'Copied';
+      setTimeout(() => (b.textContent = o), 1400);
+    });
+  });
+
+  // ---- waitlist (front-end only; wire to your form backend) ----
+  const form = document.getElementById('waitlist');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = form.querySelector('input');
+    if (!input.value || !input.checkValidity()) { input.focus(); input.style.borderColor = 'var(--down)'; return; }
+    form.classList.add('sent');
+  });
+
+  // ---- scroll reveal ----
+  const rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    rvs.forEach((el) => io.observe(el));
+    // safety net: never leave content hidden if observation stalls
+    setTimeout(() => rvs.forEach((el) => el.classList.add('in')), 2500);
+  } else {
+    rvs.forEach((el) => el.classList.add('in'));
+  }
+})();
+</script>
+</body>
+</html>
