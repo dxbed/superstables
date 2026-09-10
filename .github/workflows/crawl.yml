@@ -1,0 +1,18 @@
+# Vercel Hobby cron only fires daily, so this pings the crawl route every 6 hours
+# (briefing §2: crawl every 6h) and probes a stale batch on the half-runs.
+name: crawl
+on:
+  schedule:
+    - cron: "20 */6 * * *"   # full crawl + probe batch
+    - cron: "20 3-23/6 * * *" # offset probe-only run to keep liveness fresh
+  workflow_dispatch: {}
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger crawl
+        run: |
+          if [ "${{ github.event.schedule }}" = "20 3-23/6 * * *" ]; then EXTRA="&probe=only&batch=500&conc=24"; else EXTRA=""; fi
+          code=$(curl -s -o /tmp/out.json -w "%{http_code}" "https://www.superstables.com/api/cron/crawl?key=${{ secrets.CRON_SECRET }}${EXTRA}")
+          cat /tmp/out.json
+          [ "$code" = "200" ]

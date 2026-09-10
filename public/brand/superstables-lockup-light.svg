@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="72" viewBox="0 0 140 24" fill="none">
+  <circle cx="5" cy="7" r="2.4" fill="#0A0C0E"/>
+  <path d="M7.4 7h4.1a2.5 2.5 0 0 1 2.5 2.5v5a2.5 2.5 0 0 0 2.5 2.5h0.1" stroke="#0A0C0E" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="19" cy="17" r="2.4" fill="#CBFF00" stroke="#0A0C0E" stroke-width="1.6"/>
+  <text x="30" y="17.2" font-family="'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="15.5" letter-spacing="-0.3" fill="#0A0C0E">Superstables</text>
+</svg>
