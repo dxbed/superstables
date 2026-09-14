@@ -52,7 +52,7 @@ export default function ApiDocs() {
   return (
     <>
       <Nav />
-      <main className="wrap" style={{ padding: "56px 0 96px", maxWidth: 860 }}>
+      <main className="wrap" style={{ paddingTop: 56, paddingBottom: 96, maxWidth: 860 }}>
         <span className="eyebrow plain">API reference</span>
         <h1 style={{ fontSize: "clamp(32px, 4vw, 44px)", marginTop: 10 }}>The index, as data</h1>
         <p className="lede" style={{ marginTop: 12 }}>

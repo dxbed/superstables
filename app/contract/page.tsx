@@ -19,7 +19,7 @@ export default async function ContractPage() {
   return (
     <>
       <Nav />
-      <main className="wrap" style={{ padding: "56px 0 96px", maxWidth: 760 }}>
+      <main className="wrap" style={{ paddingTop: 56, paddingBottom: 96, maxWidth: 760 }}>
         <span className="eyebrow plain">Token</span>
         <h1 style={{ fontSize: "clamp(32px, 4vw, 44px)", marginTop: 10 }}>Contract</h1>
         <p className="lede" style={{ marginTop: 12 }}>

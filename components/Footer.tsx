@@ -28,6 +28,9 @@ export default function Footer() {
           <a href={site.links.x} target="_blank" rel="noopener noreferrer">
             X / @superstables
           </a>
+          <a href={site.links.github} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
         </div>
         <div className="fine">
           <span>© {new Date().getFullYear()} Superstables. Non-custodial software; we never hold customer funds.</span>

@@ -51,7 +51,7 @@ function Row({ variant }: { variant: "dark" | "light" }) {
 
 export default function BrandPage() {
   return (
-    <main className="wrap" style={{ padding: "64px 0 96px", display: "grid", gap: 24 }}>
+    <main className="wrap" style={{ paddingTop: 64, paddingBottom: 96, display: "grid", gap: 24 }}>
       <div>
         <span className="eyebrow plain">Brand</span>
         <h1 style={{ fontSize: "clamp(32px, 4vw, 48px)", marginTop: 12 }}>Logo</h1>
