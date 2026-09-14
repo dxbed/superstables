@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import MobileMenu from "./MobileMenu";
 import { site } from "@/content/site";
 import ThemeToggle from "./ThemeToggle";
 
@@ -32,6 +33,7 @@ export default function Nav() {
           <Link className="btn" href="/submit">
             New listing
           </Link>
+          <MobileMenu />
         </div>
       </div>
     </nav>

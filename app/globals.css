@@ -76,10 +76,16 @@
   .install .dollar { color: var(--ink-3); }
   .install button { height: 32px; padding: 0 10px; border: 0; border-radius: 2px; background: var(--bg-3); color: var(--ink-2); font-family: var(--body); font-size: 12.5px; font-weight: 600; cursor: pointer; }
   .install button:hover { color: var(--ink); }
+  .burger-wrap { display: none; }
+  .burger-panel { position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 0 12px; }
+  .burger-panel a { padding: 12px var(--gutter); font-size: 15.5px; color: var(--ink); }
+  .burger-panel a:hover { background: var(--bg-2); }
   @media (max-width: 860px) {
-    .nav .wrap { flex-wrap: wrap; height: auto; padding: 10px var(--gutter); gap: 12px; }
-    .nav-links { order: 3; width: 100%; gap: 20px; font-size: 14px; overflow-x: auto; white-space: nowrap; padding-bottom: 2px; }
-    .nav-cta { margin-left: auto; gap: 8px; }
+    .nav { position: sticky; }
+    .nav .wrap { position: relative; }
+    .nav-links { display: none; }
+    .nav-cta { gap: 8px; }
+    .burger-wrap { display: contents; }
   }
   @media (max-width: 640px) {
     .nav-cta .icon-link { display: none; }
