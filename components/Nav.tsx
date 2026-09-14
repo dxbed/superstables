@@ -12,6 +12,7 @@ export default function Nav() {
           <Link href="/docs">API</Link>
           <Link href="/#roadmap">Roadmap</Link>
           <Link href="/contract">Contract</Link>
+          <Link href="/treasury">Treasury</Link>
         </div>
         <div className="nav-cta">
           <a className="icon-link" href={site.links.github} target="_blank" rel="noopener noreferrer" aria-label="Superstables on GitHub">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { CopyBtn } from "@/components/app/ui";
@@ -49,8 +50,9 @@ export default async function ContractPage() {
 
         <div className="sub-head" style={{ marginTop: 36 }}><h2>How the fees work</h2></div>
         <p style={{ color: "var(--ink-2)" }}>
-          Every trade carries a 1% fee, and all of it goes to development. There is no marketing wallet and no team
-          allocation taken from fees.
+          Every trade carries a 1% fee, collected in tokenized NVDA. Fees fund the project: development first, plus
+          buybacks, liquidity and marketing. Every claim and every expense is itemized in public on the{" "}
+          <Link className="link" href="/treasury">Treasury page</Link>, down to single line items.
         </p>
 
         <div className="sub-head" style={{ marginTop: 32 }}><h2>The dev wallet is locked</h2></div>
